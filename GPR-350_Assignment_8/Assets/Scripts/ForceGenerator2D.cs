@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public struct PhysicsData2D
 {
-    // Start is called before the first frame update
-    void Start()
+    public Vector2 pos;
+    public Vector2 accumulatedForces;
+}
+
+public abstract class ForceGenerator2D : MonoBehaviour
+{
+    abstract public void updateForce(ref PhysicsData2D pData, double dt);
+
+    //couldn't figure out how to set this to return a const boolean
+    public bool getShouldEffectAll() 
     {
-        
+        return shouldEffectAll;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    protected bool shouldEffectAll = true;
 }
