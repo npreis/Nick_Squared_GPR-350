@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct PhysicsDataPtr
+{
+
+}
+
 public class Particle2D : MonoBehaviour
 {
     double mLifeSpan = 0.0;
@@ -19,13 +24,18 @@ public class Particle2D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
-    void Update()
+    void Update(double dt)
     {
-        
+        mLifeLeft -= dt;
+        if (mLifeLeft <= 0.0)
+        {
+            return true;
+        }
+        return false;
     }
 
     void Draw()
@@ -33,5 +43,17 @@ public class Particle2D : MonoBehaviour
 
     }
 
-    
+    double GetPercentageOfLifeLeft()
+    {
+        if(mLifeSpan <= 0.0)
+        {
+            return 0.0;
+        }
+        return mLifeLeft / mLifeSpan;
+    }
+
+    double GetPercentageOfLifeElapsed()
+    {
+        return 1.0 - GetPercentageOfLifeLeft();
+    }
 }
