@@ -16,3 +16,13 @@ public class Particle2DLink : MonoBehaviour
         
     }
 }
+
+public class Particle2DCable : Particle2DLink
+{
+
+}
+
+public class Particle2DRod : Particle2DLink
+{
+
+}

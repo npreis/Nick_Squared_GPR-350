@@ -11,7 +11,7 @@ public class Particle2D : MonoBehaviour
 {
     double mLifeSpan = 0.0;
     double mLifeLeft = 0.0;
-    //Sprite mSprite;
+    //public Sprite mSprite;
     //PhysicsDataPtr mpPhysicsData = nullptr;
     //Color mStartColor;
     //Color mEndColor;
@@ -28,7 +28,7 @@ public class Particle2D : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(double dt)
+    bool Update(double dt)
     {
         mLifeLeft -= dt;
         if (mLifeLeft <= 0.0)
