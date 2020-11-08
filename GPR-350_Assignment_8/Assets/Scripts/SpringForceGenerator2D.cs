@@ -24,7 +24,7 @@ public class SpringForceGenerator2D : ForceGenerator2D
         shouldEffectAll = false;
     }
 
-    public override void updateForce(ref PhysicsData2D pData, double dt)
+    public override void UpdateForce(ref PhysicsData2D pData, float dt)
     {
         //TO DO: get from static class?
         PhysicsData2D object1 = new PhysicsData2D(); 
