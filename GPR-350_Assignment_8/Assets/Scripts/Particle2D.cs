@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public struct PhysicsDataPtr
 {
     public Vector2 pos;
     public Vector2 vel;
     public Vector2 acc;
-    public float mass;
+    public Vector2 accumulatedForces;
+    public float inverseMass;
+    public float dampingConstant;
+    public bool shouldIgnoreForces;
 }
 
 public class Particle2D : MonoBehaviour
@@ -15,9 +19,9 @@ public class Particle2D : MonoBehaviour
     double mLifeSpan = 0.0;
     double mLifeLeft = 0.0;
     public GameObject mSprite;
-    PhysicsDataPtr mpPhysicsData = nullptr;
-    Color32 mStartColor;
-    Color32 mEndColor;
+    public PhysicsDataPtr mpPhysicsData;
+    //Color32 mStartColor;
+    //Color32 mEndColor;
     double mStartAlpha = 1.0;
     double mEndAlpha = 1.0;
     double mScale = 1.0;
@@ -31,19 +35,18 @@ public class Particle2D : MonoBehaviour
     }
 
     // Update is called once per frame
-    bool Update(double dt)
+    void Update()
     {
-        mLifeLeft -= dt;
+        mLifeLeft -= Time.deltaTime;
         if (mLifeLeft <= 0.0)
         {
-            return true;
+            Destroy(gameObject);
         }
-        return false;
     }
 
-    void Draw()
+    void FixedUpdate()
     {
-
+        Integrator.Integrate(ref mpPhysicsData, Time.fixedDeltaTime);
     }
 
     public double GetPercentageOfLifeLeft()
