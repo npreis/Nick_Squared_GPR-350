@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BouyancyForceGenerator2D.cs" />
      <Compile Include="Assets\Scripts\ContactResolver.cs" />
      <Compile Include="Assets\Scripts\ForceGenerator2D.cs" />
      <Compile Include="Assets\Scripts\ForceManager.cs" />
@@ -62,6 +63,8 @@
      <Compile Include="Assets\Scripts\Particle2D.cs" />
      <Compile Include="Assets\Scripts\Particle2DContact.cs" />
      <Compile Include="Assets\Scripts\Particle2DLink.cs" />
+     <Compile Include="Assets\Scripts\PointForceGenerator2D.cs" />
+     <Compile Include="Assets\Scripts\SpringForceGenerator2D.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

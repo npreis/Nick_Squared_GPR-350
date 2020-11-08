@@ -11,7 +11,7 @@ public class Particle2D : MonoBehaviour
 {
     double mLifeSpan = 0.0;
     double mLifeLeft = 0.0;
-    //public Sprite mSprite;
+    //public GameObject mSprite;
     //PhysicsDataPtr mpPhysicsData = nullptr;
     //Color mStartColor;
     //Color mEndColor;
@@ -43,7 +43,7 @@ public class Particle2D : MonoBehaviour
 
     }
 
-    double GetPercentageOfLifeLeft()
+    public double GetPercentageOfLifeLeft()
     {
         if(mLifeSpan <= 0.0)
         {
@@ -52,7 +52,7 @@ public class Particle2D : MonoBehaviour
         return mLifeLeft / mLifeSpan;
     }
 
-    double GetPercentageOfLifeElapsed()
+    public double GetPercentageOfLifeElapsed()
     {
         return 1.0 - GetPercentageOfLifeLeft();
     }
