@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class ForceManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    static List<ForceGenerator2D> forceGenerators;
+
+    static void AddForceGenerator(ref ForceGenerator2D fg)
     {
-        
+        forceGenerators.Add(fg);
     }
 
-    // Update is called once per frame
-    void Update()
+    static void DeleteForceGenerator(ref ForceGenerator2D fg)
     {
-        
+        forceGenerators.Remove(fg);
+    }
+
+    static void ApplyAllForces(float dt)
+    {
+        foreach(ForceGenerator2D fg in forceGenerators)
+        {
+            if(fg.GetShouldEffectAll())
+            {
+                foreach(Particle2D particle2D in FindObjectsOfType<Particle2D>())
+                {
+                    //fg.UpdateForce(particle2D, dt);
+                }
+            }
+            else
+            {
+                //fg.UpdateForce(new PhysicsData2D(), dt);
+            }
+        }
     }
 }

@@ -19,7 +19,7 @@ public struct PhysicsData2D
 
 public abstract class ForceGenerator2D : MonoBehaviour
 {
-    abstract public void UpdateForce(ref PhysicsData2D pData, double dt);
+    abstract public void UpdateForce(ref PhysicsData2D pData, float dt);
 
     //couldn't figure out how to set this to return a const boolean
     public bool GetShouldEffectAll() 

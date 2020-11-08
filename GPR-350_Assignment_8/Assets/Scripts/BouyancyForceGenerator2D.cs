@@ -33,7 +33,7 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
         
     }
 
-    public override void UpdateForce(ref PhysicsData2D pData, double dt)
+    public override void UpdateForce(ref PhysicsData2D pData, float dt)
     {
         //TODO LINK UP TO ID THROUGH STATIC CLASS
         PhysicsData2D obj = new PhysicsData2D();
