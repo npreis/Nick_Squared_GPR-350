@@ -21,7 +21,8 @@ public class Particle2DLink : MonoBehaviour
 
     float GetCurrentLength()
     {
-
+        float distance = Mathf.Abs(mObj1.GetComponent<PhysicsDataPtr>().pos - mObj2.GetComponent<PhysicsDataPtr>().pos);
+        return distance;
     }
 }
 
