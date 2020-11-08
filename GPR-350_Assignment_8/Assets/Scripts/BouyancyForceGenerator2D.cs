@@ -33,23 +33,23 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
         
     }
 
-    public override void updateForce(ref PhysicsData2D pData, double dt)
+    public override void UpdateForce(ref PhysicsData2D pData, double dt)
     {
         //TODO LINK UP TO ID THROUGH STATIC CLASS
         PhysicsData2D obj = new PhysicsData2D();
 
-        const float yPos = obj.y;
+        float yPos = obj.pos.y;
         float yForce = 0;
 
         if (yPos >= liquidPlaneY - maxDepth)
             return;
-        else if (yObject <= mLiquidPlaneY - mMaxDepth)
-            yForce = mObjectVolume * mLiquidDensity;
+        else if (yPos <= liquidPlaneY - maxDepth)
+            yForce = objectVolume * liquidDensity;
         else
-            yForce = mLiquidDensity * mObjectVolume * (yObject - mMaxDepth - mLiquidPlaneY) / (2 * mMaxDepth);
+            yForce = liquidDensity * objectVolume * (yPos - maxDepth - liquidPlaneY) / (2 * maxDepth);
 
-        Vector2D force = Vector2D(0.0f, -abs(yForce));
-        obj.accumulatedForce += force;
+        Vector2 force = new Vector2(0.0f, -Mathf.Abs(yForce));
+        obj.accumulatedForces += force;
 
         //TODO SET ID TO NEW DATA
     }

@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Integrator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //public static int nextPhysicsID = 0;
 
-    // Update is called once per frame
-    void Update()
+    static void Integrate(ref PhysicsData2D physData, float dt)
     {
-        
+        physData.pos += physData.vel * dt;
+
+        Vector2 resultingAcc = new Vector2(physData.acc.x, physData.acc.y);
+
+        if(!physData.shouldIgnoreForces)
+        {
+            resultingAcc += physData.accumulatedForces * physData.inverseMass;
+        }
+
+        physData.vel += (resultingAcc * dt);
+        float damping = Mathf.Pow(physData.dampingConstant, dt);
+        physData.vel *= damping;
+
+        physData.accumulatedForces = new Vector2(0, 0);
     }
 }

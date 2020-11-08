@@ -21,7 +21,7 @@ public class PointForceGenerator2D : ForceGenerator2D
     }
 
 
-    public override void updateForce(ref PhysicsData2D pData, double dt)
+    public override void UpdateForce(ref PhysicsData2D pData, double dt)
     {
         Vector2 diff = point - pData.pos;
         if (diff.magnitude < range)
