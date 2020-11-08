@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Particle2DLink : MonoBehaviour
 {
+    PhysicsDataPtr mObj1;
+    PhysicsDataPtr mObj2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,11 @@ public class Particle2DLink : MonoBehaviour
     void Update()
     {
         
+    }
+
+    float GetCurrentLength()
+    {
+
     }
 }
 

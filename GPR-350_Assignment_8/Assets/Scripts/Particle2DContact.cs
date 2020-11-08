@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Particle2DContact : MonoBehaviour
 {
-    public GameObject mObj1;
-    public GameObject mObj2;
+    PhysicsDataPtr mObj1;
+    PhysicsDataPtr mObj2;
     float mRestitutionCoefficient = 0.0f;
     public Vector2 mContactNormal;
     float mPenetration = 0.0f;
@@ -33,10 +33,10 @@ public class Particle2DContact : MonoBehaviour
 
     public float CalculateSeparatingVelocity()
     {
-        Vector2 relativeVel = mObj1.GetComponent<Particle2D>().Velocity;
+        Vector2 relativeVel = PhysicsDataPtr::getVelocity(mObj1);
         if(mObj2)
         {
-            relativeVel -= mObj2.GetComponent<Particle2D>().Velocity;
+            relativeVel -= PhysicsDataPtr::getVelocity(mObj2);
         }
         return Vector2.Dot(relativeVel, mContactNormal);
     }
@@ -49,9 +49,9 @@ public class Particle2DContact : MonoBehaviour
 
         float newSepVel = -separatingVel * mRestitutionCoefficient;
 
-        Vector2 velFromAcc = mObj1.GetComponent<Particle2D>().Acceleraton;
+        Vector2 velFromAcc = PhysicsDataPtr::getAcceleration(mObj1);
         if (mObj2)
-            velFromAcc -= mObj1.GetComponent<Particle2D>().Acceleraton;
+            velFromAcc -= PhysicsDataPtr::getAcceleration(mObj2);
         float accCausedSepVelocity = Vector2.Dot(velFromAcc, mContactNormal) * Time.deltaTime;
 
         if (accCausedSepVelocity < 0.0f)
@@ -63,9 +63,9 @@ public class Particle2DContact : MonoBehaviour
 
         float deltaVel = newSepVel - separatingVel;
 
-        float totalInverseMass = (float)(1.0 / mObj1.GetComponent<Particle2D>().Mass);
+        float totalInverseMass = (float)PhysicsDataPtr::getInverseMass(mObj1);
         if (mObj2)
-            totalInverseMass += (float)(1.0 / mObj1.GetComponent<Particle2D>().Mass);
+            totalInverseMass += (float)PhysicsDataPtr::getInverseMass(mObj2);
 
         if (totalInverseMass <= 0)//all infinite massed objects
             return;
@@ -73,12 +73,12 @@ public class Particle2DContact : MonoBehaviour
         float impulse = deltaVel / totalInverseMass;
         Vector2 impulsePerIMass = mContactNormal * impulse;
 
-        Vector2 newVelocity = mObj1.GetComponent<Particle2D>().Velocity + impulsePerIMass * (float)(1.0 / mObj1.GetComponent<Particle2D>().Mass);
-        mObj1.GetComponent<Particle2D>().Velocity = newVelocity;
+        Vector2 newVelocity = PhysicsDataPtr::getVelocity(mObj1) + impulsePerIMass * (float)PhysicsDataPtr::getInverseMass(mObj1);
+        PhysicsDataPtr::getVelocity(mObj1) = newVelocity;
         if (mObj2)
         {
-            Vector2 newVelocity2 = mObj2.GetComponent<Particle2D>().Velocity + impulsePerIMass * (float)-(1.0 / mObj2.GetComponent<Particle2D>().Mass);
-            mObj2.GetComponent<Particle2D>().Velocity = newVelocity2;
+            Vector2 newVelocity2 = PhysicsDataPtr::getVelocity(mObj2) + impulsePerIMass * (float)-PhysicsDataPtr::getInverseMass(mObj2);
+            PhysicsDataPtr::getVelocity(mObj2) = newVelocity2;
         }
     }
 
@@ -87,18 +87,18 @@ public class Particle2DContact : MonoBehaviour
         if (mPenetration <= 0.0f)
             return;
 
-        float totalInverseMass = (float)(1.0 / mObj1.GetComponent<Particle2D>().Mass);
+        float totalInverseMass = (float)PhysicsDataPtr::getInverseMass(mObj1);
         if (mObj2)
-            totalInverseMass += (float)(1.0 / mObj2.GetComponent<Particle2D>().Mass);
+            totalInverseMass += (float)PhysicsDataPtr::getInverseMass(mObj1);
 
         if (totalInverseMass <= 0)//all infinite massed objects
             return;
 
         Vector2 movePerIMass = mContactNormal * (mPenetration / totalInverseMass);
 
-        mMove1 = movePerIMass * (float)(1.0 / mObj1.GetComponent<Particle2D>().Mass);
+        mMove1 = movePerIMass * (float)(PhysicsDataPtr::getInverseMass(mObj1));
         if (mObj2)
-            mMove2 = movePerIMass * (float)-(1.0 / mObj2.GetComponent<Particle2D>().Mass);
+            mMove2 = movePerIMass * (float)-(PhysicsDataPtr::getInverseMass(mObj1));
         else
             mMove2 = ZERO_VECTOR2D;
 

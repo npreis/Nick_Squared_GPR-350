@@ -4,15 +4,19 @@ using UnityEngine;
 
 public struct PhysicsDataPtr
 {
-
+    Vector2 getPosition(PhysicsDataPtr obj);
+    Vector2 getVelocity(PhysicsDataPtr obj);
+    Vector2 getAcceleration(PhysicsDataPtr obj);
+    Vector2 getMass(PhysicsDataPtr obj);
+    Vector2 getInverseMass(PhysicsDataPtr obj);
 }
 
 public class Particle2D : MonoBehaviour
 {
     double mLifeSpan = 0.0;
     double mLifeLeft = 0.0;
-    //public GameObject mSprite;
-    //PhysicsDataPtr mpPhysicsData = nullptr;
+    public GameObject mSprite;
+    PhysicsDataPtr mpPhysicsData = nullptr;
     //Color mStartColor;
     //Color mEndColor;
     double mStartAlpha = 1.0;
