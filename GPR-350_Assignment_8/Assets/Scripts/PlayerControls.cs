@@ -60,7 +60,8 @@ public class PlayerControls : MonoBehaviour
             GameObject projectile2 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
             projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
             Vector3 tmp = (projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude);
-            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y) * .5f;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos = projectile2.transform.position;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y).normalized * 4.0f;
             projectile2.transform.position = projectile2.GetComponent<Particle2D>().mpPhysicsData.pos;
 
             SpringForceGenerator2D fg = new SpringForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 1, 4);
@@ -77,7 +78,8 @@ public class PlayerControls : MonoBehaviour
             GameObject projectile2 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
             projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
             Vector3 tmp = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
-            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y) * .5f;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos = projectile2.transform.position;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y).normalized * 3.0f;
             projectile2.transform.position = projectile2.GetComponent<Particle2D>().mpPhysicsData.pos;
 
             //<<<<<<< Updated upstream
