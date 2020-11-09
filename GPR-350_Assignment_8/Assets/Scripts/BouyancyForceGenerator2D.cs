@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BouyancyForceGenerator2D : ForceGenerator2D
 {
-    int startingID1;
-    float startingObjectVolume;
-    float startingMaxDepth;
-    float startingLiquidPlaneY;
-    float startingLiquidDensity;
+    public Particle2D startingID1;
+    public float startingObjectVolume;
+    public float startingMaxDepth;
+    public float startingLiquidPlaneY;
+    public float startingLiquidDensity;
 
-    int id1;
+    Particle2D id1;
     float objectVolume;
     float maxDepth;
     float liquidPlaneY;
@@ -33,10 +33,10 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
         
     }
 
-    public override void UpdateForce(ref PhysicsData2D pData, float dt)
+    public override void UpdateForce(ref PhysicsDataPtr pData, float dt)
     {
         //TODO LINK UP TO ID THROUGH STATIC CLASS
-        PhysicsData2D obj = new PhysicsData2D();
+        PhysicsDataPtr obj = id1.mpPhysicsData;
 
         float yPos = obj.pos.y;
         float yForce = 0;
@@ -51,6 +51,6 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
         Vector2 force = new Vector2(0.0f, -Mathf.Abs(yForce));
         obj.accumulatedForces += force;
 
-        //TODO SET ID TO NEW DATA
+        id1.mpPhysicsData = obj;
     }
 }
