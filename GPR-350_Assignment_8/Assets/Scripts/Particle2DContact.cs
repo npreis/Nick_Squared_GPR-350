@@ -13,8 +13,7 @@ public class Particle2DContact : MonoBehaviour
     public Vector2 mMove1;
     public Vector2 mMove2;
 
-    // Start is called before the first frame update
-    void Start(GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2)
+    public Particle2DContact(GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2)
     {
         mObj1 = obj1;
         mObj2 = obj2;
@@ -23,6 +22,11 @@ public class Particle2DContact : MonoBehaviour
         mPenetration = penetration;
         mMove1 = move1;
         mMove2 = move2;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
     }
 
     // Update is called once per frame

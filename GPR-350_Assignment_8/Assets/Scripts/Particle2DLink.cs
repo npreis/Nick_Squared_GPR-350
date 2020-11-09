@@ -23,7 +23,7 @@ public class Particle2DLink : MonoBehaviour
 
     protected float GetCurrentLength()
     {
-        float distance = (mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos);
+        float distance = (mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos).magnitude;
         return distance;
     }
 }
@@ -45,7 +45,7 @@ public class Particle2DCable : Particle2DLink
             return;
 
         Vector2 normal = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
-        normal = (1.0f / normal);
+        normal.Normalize();
         float penetration = length - mMaxLength;
 
         GameObject obj1 = mObj1;
@@ -93,7 +93,7 @@ public class Particle2DRod : Particle2DLink
             normal = mObj2.GetComponent<Particle2D>().mpPhysicsData.pos - mObj1.GetComponent<Particle2D>().mpPhysicsData.pos;
         }
 
-        normal = (1.0f / normal);
+        normal.Normalize();
 
         GameObject obj1 = mObj1;
         GameObject obj2 = mObj2;
