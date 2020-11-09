@@ -65,7 +65,11 @@ public class PlayerControls : MonoBehaviour
         }
         else
         {
-
+            GameObject projectile1 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
+            projectile1.GetComponent<Particle2D>().mpPhysicsData.vel = projectile1.transform.up * projectile1.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+            GameObject projectile2 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
         }
     }
 
