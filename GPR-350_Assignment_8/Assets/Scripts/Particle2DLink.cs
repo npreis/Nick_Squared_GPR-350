@@ -23,7 +23,7 @@ public class Particle2DLink : MonoBehaviour
 
     protected float GetCurrentLength()
     {
-        float distance = Mathf.Abs(mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos);
+        float distance = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
         return distance;
     }
 }
@@ -48,8 +48,7 @@ public class Particle2DCable : Particle2DLink
         normal = (Vector2)(1.0 / normal);
         float mPenetration = length - mMaxLength;
 
-        Particle2DContact contact(PhysicsDataPtr obj1 = mObj1, PhysicsDataPtr obj2 = mObj2, float restitutionCoefficient = mRestitution, 
-            Vector2 contactNormal = normal, float penetration = mPenetration, Vector2 move1 = (0, 0), Vector2 move2 = (0, 0));
+        Particle2DContact contact(GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2);
 
         contacts.Add(contact);
     }
@@ -88,9 +87,8 @@ public class Particle2DRod : Particle2DLink
             normal = mObj2.GetComponent<Particle2D>().mpPhysicsData.pos - mObj1.GetComponent<Particle2D>().mpPhysicsData.pos;
         }
 
-        normal = (Vector2)(1.0 / normal);
-        Particle2DContact contact(GameObject obj1 = mObj1, GameObject obj2 = mObj2, float restitutionCoefficient = mRestitution,
-            Vector2 contactNormal = normal, float penetration = penetration, Vector2 move1 = Vector2.zero, Vector2 move2 = Vector2.zero);
+        normal = (float)(1.0f / normal);
+        Particle2DContact contact (GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2);
         contacts.Add(contact);
     }
 }
