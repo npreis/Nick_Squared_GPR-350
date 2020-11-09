@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public struct PhysicsDataPtr
@@ -31,9 +32,9 @@ public class Particle2D : MonoBehaviour
     }
 
     // Update is called once per frame
-    bool Update(double dt)
+    bool Update()
     {
-        mLifeLeft -= dt;
+        mLifeLeft -= Time.deltaTime;
         if (mLifeLeft <= 0.0)
         {
             return true;

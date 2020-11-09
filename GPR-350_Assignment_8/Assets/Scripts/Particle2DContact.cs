@@ -14,7 +14,7 @@ public class Particle2DContact : MonoBehaviour
     public Vector2 mMove2;
 
     // Start is called before the first frame update
-    void Start()
+    void Start(PhysicsDataPtr obj1, PhysicsDataPtr obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2)
     {
         
     }
