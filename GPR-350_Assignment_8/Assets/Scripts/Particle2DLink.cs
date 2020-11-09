@@ -22,7 +22,7 @@ public class Particle2DLink : MonoBehaviour
 
     float GetCurrentLength()
     {
-        float distance = Mathf.Abs(mObj1.GetComponent<PhysicsDataPtr>().pos - mObj2.GetComponent<PhysicsDataPtr>().pos);
+        float distance = Mathf.Abs(mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos);
         return distance;
     }
 }
@@ -37,20 +37,20 @@ public class Particle2DCable : Particle2DLink
 
     }
 
-    protected virtual void createContacts(Particle2DContact contacts)
+    protected virtual void createContacts(List<Particle2DContact> contacts)
     {
         float length = getCurrentLength();
         if (length < mMaxLength)
             return;
 
-        Vector2 normal = mObj1.GetComponent<PhysicsDataPtr>().pos - mObj2.GetComponent<PhysicsDataPtr>().pos;
+        Vector2 normal = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
         normal.normalize();
         float penetration = length - mMaxLength;
 
         Particle2DContact contact(PhysicsDataPtr obj1 = mObj1, PhysicsDataPtr obj2 = mObj2, float restitutionCoefficient = mRestitution, 
             Vector2 contactNormal = normal, float penetration = penetration, Vector2 move1 = ZERO_VECTOR2D, Vector2 move2 = ZERO_VECTOR2D);
 
-        contacts.push_back(contact);
+        contacts.Add(contact);
     }
 }
 
@@ -65,7 +65,7 @@ public class Particle2DRod : Particle2DLink
 
     }
 
-    protected virtual void createContacts(Particle2DContact contacts)
+    protected virtual void createContacts(List<Particle2DContact> contacts)
     {
         float length = getCurrentLength();
         if (length == mRodLength)
@@ -80,16 +80,16 @@ public class Particle2DRod : Particle2DLink
         if (penetration < 0)
         {
             penetration = mRodLength - length;
-            normal = mObj1.GetComponent<PhysicsDataPtr>().pos - mObj2.GetComponent<PhysicsDataPtr>().pos;
+            normal = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
         }
         else
         {
-            normal = mObj2.GetComponent<PhysicsDataPtr>().pos - mObj1.GetComponent<PhysicsDataPtr>().pos;
+            normal = mObj2.GetComponent<Particle2D>().mpPhysicsData.pos - mObj1.GetComponent<Particle2D>().mpPhysicsData.pos;
         }
 
         normal.normalize();
         Particle2DContact contact(PhysicsDataPtr obj1 = mObj1, PhysicsDataPtr obj2 = mObj2, float restitutionCoefficient = mRestitution,
             Vector2 contactNormal = normal, float penetration = penetration, Vector2 move1 = ZERO_VECTOR2D, Vector2 move2 = ZERO_VECTOR2D);
-        contacts.push_back(contact);
+        contacts.Add(contact);
     }
 }
