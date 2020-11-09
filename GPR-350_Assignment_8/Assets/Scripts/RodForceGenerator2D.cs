@@ -37,6 +37,8 @@ public class RodForceGenerator2D : ForceGenerator2D
             return;
         }
 
+        diff.Normalize();
+
         object1.mpPhysicsData.accumulatedForces += diff;
         object2.mpPhysicsData.accumulatedForces += diff;
     }

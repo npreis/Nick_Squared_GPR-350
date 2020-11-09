@@ -70,6 +70,11 @@ public class PlayerControls : MonoBehaviour
             GameObject projectile2 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
             projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
             projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+
+            RodForceGenerator2D fg = new RodForceGenerator2D();
+            fg.startingObject1 = projectile1.GetComponent<Particle2D>();
+            fg.startingObject2 = projectile2.GetComponent<Particle2D>();
+            ForceManager.AddForceGenerator(ref fg);
         }
     }
 
