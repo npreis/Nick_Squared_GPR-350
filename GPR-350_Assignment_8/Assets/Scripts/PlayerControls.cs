@@ -64,7 +64,7 @@ public class PlayerControls : MonoBehaviour
             projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y).normalized * 4.0f;
             projectile2.transform.position = projectile2.GetComponent<Particle2D>().mpPhysicsData.pos;
 
-            SpringForceGenerator2D fg = new SpringForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 1, 4);
+            SpringForceGenerator2D fg = new SpringForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 1, 2);
             ForceManager.AddForceGenerator(fg);
             BouyancyForceGenerator2D bfg1 = new BouyancyForceGenerator2D(projectile1.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
             ForceManager.AddForceGenerator(bfg1);
