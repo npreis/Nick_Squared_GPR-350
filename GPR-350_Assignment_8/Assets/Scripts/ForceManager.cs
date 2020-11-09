@@ -7,6 +7,7 @@ public class ForceManager : MonoBehaviour
     static List<SpringForceGenerator2D> springForceGenerators;
     static List<PointForceGenerator2D> pointForceGenerators;
     static List<BouyancyForceGenerator2D> bouyancyForceGenerators;
+    static List<RodForceGenerator2D> rodForceGenerators;
 
     static public void AddForceGenerator(ref SpringForceGenerator2D fg)
     {
@@ -20,6 +21,10 @@ public class ForceManager : MonoBehaviour
     {
         bouyancyForceGenerators.Add(fg);
     }
+    static public void AddForceGenerator(ref RodForceGenerator2D fg)
+    {
+        rodForceGenerators.Add(fg);
+    }
 
     static public void DeleteForceGenerator(ref BouyancyForceGenerator2D fg)
     {
@@ -32,6 +37,10 @@ public class ForceManager : MonoBehaviour
     static public void DeleteForceGenerator(ref PointForceGenerator2D fg)
     {
         pointForceGenerators.Remove(fg);
+    }
+    static public void DeleteForceGenerator(ref RodForceGenerator2D fg)
+    {
+        rodForceGenerators.Remove(fg);
     }
 
     static public void ApplyAllForces(float dt)
@@ -67,6 +76,21 @@ public class ForceManager : MonoBehaviour
             }
         }
         foreach (BouyancyForceGenerator2D fg in bouyancyForceGenerators)
+        {
+            if (fg.GetShouldEffectAll())
+            {
+                foreach (Particle2D particle2D in GameObject.FindObjectsOfType<Particle2D>())
+                {
+                    fg.UpdateForce(ref particle2D.mpPhysicsData, dt);
+                }
+            }
+            else
+            {
+                PhysicsDataPtr p = new PhysicsDataPtr();
+                fg.UpdateForce(ref p, dt);
+            }
+        }
+        foreach (RodForceGenerator2D fg in rodForceGenerators)
         {
             if (fg.GetShouldEffectAll())
             {
