@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 [System.Serializable]
@@ -35,7 +36,11 @@ public class Particle2D : MonoBehaviour
     }
 
     // Update is called once per frame
+<<<<<<< HEAD
+    bool Update()
+=======
     void Update()
+>>>>>>> b5602c57eefd2f96a9819817012f6cdf569a9d9a
     {
         mLifeLeft -= Time.deltaTime;
         if (mLifeLeft <= 0.0)
