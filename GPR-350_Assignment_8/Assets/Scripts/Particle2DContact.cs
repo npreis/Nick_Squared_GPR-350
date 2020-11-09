@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Particle2DContact : MonoBehaviour
 {
-    PhysicsDataPtr mObj1;
-    PhysicsDataPtr mObj2;
+    GameObject mObj1;
+    GameObject mObj2;
     float mRestitutionCoefficient = 0.0f;
     public Vector2 mContactNormal;
     float mPenetration = 0.0f;
@@ -14,15 +14,21 @@ public class Particle2DContact : MonoBehaviour
     public Vector2 mMove2;
 
     // Start is called before the first frame update
-    void Start(PhysicsDataPtr obj1, PhysicsDataPtr obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2)
+    void Start(GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2)
     {
-        
+        mObj1 = obj1;
+        mObj2 = obj2;
+        mRestitutionCoefficient = restitutionCoefficient;
+        mContactNormal = contactNormal;
+        mPenetration = penetration;
+        mMove1 = move1;
+        mMove2 = move2;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Resolve();
     }
 
     void Resolve()
@@ -73,7 +79,7 @@ public class Particle2DContact : MonoBehaviour
         Vector2 newVelocity = mObj1.GetComponent<Particle2D>().mpPhysicsData.vel + impulsePerIMass * (float)(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
         mObj1.GetComponent<Particle2D>().mpPhysicsData.vel = newVelocity;
                 
-        Vector2 newVelocity2 = mObj2.GetComponent<PhysicsDataPtr>.vel + impulsePerIMass * (float)-(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
+        Vector2 newVelocity2 = mObj2.GetComponent<Particle2D>().mpPhysicsData.vel + impulsePerIMass * (float)-(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
         mObj2.GetComponent<Particle2D>().mpPhysicsData.vel = newVelocity2;
     }
 
@@ -93,12 +99,10 @@ public class Particle2DContact : MonoBehaviour
         mMove1 = movePerIMass * (float)(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
         mMove2 = movePerIMass * (float)-(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
 
-        Vector2 newPosition = (Vector2)mObj1.transform.position + mMove1;
-        mObj1.transform.position = newPosition;
-        if (mObj2)
-        {
-            Vector2 newPosition2 = (Vector2)mObj2.transform.position + mMove2;
-            mObj2.transform.position = newPosition2;
-        }
+        Vector2 newPosition = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos + mMove1;
+        mObj1.GetComponent<Particle2D>().mpPhysicsData.pos = newPosition;
+
+        Vector2 newPosition2 = mObj2.GetComponent<Particle2D>().mpPhysicsData.pos + mMove2;
+        mObj2.GetComponent<Particle2D>().mpPhysicsData.pos = newPosition2;
     }
 }
