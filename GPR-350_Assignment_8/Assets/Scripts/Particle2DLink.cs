@@ -53,10 +53,8 @@ public class Particle2DCable : Particle2DLink
         float restitutionCoefficient = mRestitution;
         Vector2 contactNormal = normal;
         float mPenetration = penetration;
-        Vector2 move1 = Vector2.zero;
-        Vector2 move2 = Vector2.zero;
 
-        Particle2DContact contact(obj1, obj2, restitutionCoefficient, contactNormal, mPenetration, move1, move2);
+        Particle2DContact contact = new Particle2DContact(obj1, obj2, restitutionCoefficient, contactNormal, mPenetration, Vector2.zero, Vector2.zero);
 
         contacts.Add(contact);
     }
@@ -96,7 +94,15 @@ public class Particle2DRod : Particle2DLink
         }
 
         normal = (1.0f / normal);
-        Particle2DContact contact (GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float mPenetration, Vector2 move1, Vector2 move2);
+
+        GameObject obj1 = mObj1;
+        GameObject obj2 = mObj2;
+        float restitutionCoefficient = mRestitution;
+        Vector2 contactNormal = normal;
+        float mPenetration = penetration;
+
+        Particle2DContact contact = new Particle2DContact(obj1, obj2, restitutionCoefficient, contactNormal, mPenetration, Vector2.zero, Vector2.zero);
+
         contacts.Add(contact);
     }
 }
