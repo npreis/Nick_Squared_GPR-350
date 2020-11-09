@@ -258,6 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e90423ed69e3414a83bedc82c9a8f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particlePrefabs: []
+  rotationSpeed: 30
 --- !u!1 &1732748431
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002926180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.244, z: 0}
+  m_LocalPosition: {x: -5.77, y: 4.244, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -539,3 +541,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mLifeSpan: 10
+  mSprite: {fileID: 0}
+  mpPhysicsData:
+    pos: {x: 0, y: 0}
+    vel: {x: 4, y: 0}
+    acc: {x: 0, y: -1}
+    accumulatedForces: {x: 0, y: 0}
+    inverseMass: 0.5
+    dampingConstant: 0.9
+    shouldIgnoreForces: 0

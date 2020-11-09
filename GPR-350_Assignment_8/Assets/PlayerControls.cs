@@ -26,11 +26,11 @@ public class PlayerControls : MonoBehaviour
         {
             Fire();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        else if (Input.GetKey(KeyCode.Alpha1))
         {
             Rotate(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKey(KeyCode.Alpha2))
         {
             Rotate(false);
         }

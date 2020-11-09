@@ -17,7 +17,7 @@ public struct PhysicsDataPtr
 
 public class Particle2D : MonoBehaviour
 {
-    double mLifeSpan = 0.0;
+    public double mLifeSpan = 0.0;
     double mLifeLeft = 0.0;
     public GameObject mSprite;
     public PhysicsDataPtr mpPhysicsData;
@@ -32,7 +32,8 @@ public class Particle2D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        mLifeLeft = mLifeSpan;
+        mpPhysicsData.pos = transform.position;
     }
 
     // Update is called once per frame
@@ -44,6 +45,7 @@ public class Particle2D : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        transform.position = mpPhysicsData.pos;
     }
 
     void FixedUpdate()
