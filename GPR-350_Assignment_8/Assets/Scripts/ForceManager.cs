@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class ForceManager : MonoBehaviour
 {
-<<<<<<< HEAD
-    static List<SpringForceGenerator2D> springForceGenerators;
-    static List<PointForceGenerator2D> pointForceGenerators;
-    static List<BouyancyForceGenerator2D> bouyancyForceGenerators;
-    static List<RodForceGenerator2D> rodForceGenerators;
-=======
     static List<SpringForceGenerator2D> springForceGenerators = new List<SpringForceGenerator2D>();
     static List<PointForceGenerator2D> pointForceGenerators = new List<PointForceGenerator2D>();
     static List<BouyancyForceGenerator2D> bouyancyForceGenerators = new List<BouyancyForceGenerator2D>();
->>>>>>> f5dc9e2abfba869bc80559a6bed551be0e241fca
+    static List<RodForceGenerator2D> rodForceGenerators = new List<RodForceGenerator2D>();
+
 
     static public void AddForceGenerator(SpringForceGenerator2D fg)
     {
