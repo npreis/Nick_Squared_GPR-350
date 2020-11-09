@@ -37,7 +37,7 @@ public class Particle2DCable : Particle2DLink
 
     }
 
-    virtual void createContacts(Particle2DContact contacts)
+    protected virtual void createContacts(Particle2DContact contacts)
     {
         float length = getCurrentLength();
         if (length < mMaxLength)
@@ -65,7 +65,7 @@ public class Particle2DRod : Particle2DLink
 
     }
 
-    virtual void createContacts(Particle2DContact contacts)
+    protected virtual void createContacts(Particle2DContact contacts)
     {
         float length = getCurrentLength();
         if (length == mRodLength)
