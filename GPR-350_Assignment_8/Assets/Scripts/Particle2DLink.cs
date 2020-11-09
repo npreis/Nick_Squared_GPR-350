@@ -22,7 +22,7 @@ public class Particle2DLink : MonoBehaviour
 
     float GetCurrentLength()
     {
-        float distance = Mathf.Abs(mObj1.GetComponent<PhysicsDataPtr>().pos - mObj2.GetComponent<PhysicsDataPtr>().pos);
+        float distance = Mathf.Abs(mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos);
         return distance;
     }
 }
@@ -43,7 +43,7 @@ public class Particle2DCable : Particle2DLink
         if (length < mMaxLength)
             return;
 
-        Vector2 normal = mObj1.GetComponent<PhysicsDataPtr>().pos - mObj2.GetComponent<PhysicsDataPtr>().pos;
+        Vector2 normal = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
         normal.normalize();
         float penetration = length - mMaxLength;
 
@@ -80,11 +80,11 @@ public class Particle2DRod : Particle2DLink
         if (penetration < 0)
         {
             penetration = mRodLength - length;
-            normal = mObj1.GetComponent<PhysicsDataPtr>().pos - mObj2.GetComponent<PhysicsDataPtr>().pos;
+            normal = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
         }
         else
         {
-            normal = mObj2.GetComponent<PhysicsDataPtr>().pos - mObj1.GetComponent<PhysicsDataPtr>().pos;
+            normal = mObj2.GetComponent<Particle2D>().mpPhysicsData.pos - mObj1.GetComponent<Particle2D>().mpPhysicsData.pos;
         }
 
         normal.normalize();
