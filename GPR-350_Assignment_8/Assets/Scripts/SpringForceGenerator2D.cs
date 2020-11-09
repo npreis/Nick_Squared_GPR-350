@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class SpringForceGenerator2D : ForceGenerator2D
 {
-    public Particle2D startingObject1;
-    public Particle2D startingObject2;
-    public float startingSpringConstant;
-    public float startingRestLength;
+    public SpringForceGenerator2D(Particle2D o1, Particle2D o2, float springConst, float length)
+    {
+        object1 = o1;
+        object2 = o2;
+        springConstant = springConst;
+        restLength = length;
+    }
 
-    private Particle2D object1;
-    private Particle2D object2;
-    private float springConstant;
-    private float restLength;
+    public Particle2D object1;
+    public Particle2D object2;
+    public float springConstant;
+    public float restLength;
 
     // Start is called before the first frame update
     void Start()
     {
-        object1 = startingObject1;
-        object2 = startingObject2;
-        springConstant = startingSpringConstant;
-        restLength = startingRestLength;
         shouldEffectAll = false;
     }
 

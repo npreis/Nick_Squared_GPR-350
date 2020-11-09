@@ -4,32 +4,32 @@ using UnityEngine;
 
 public class ForceManager : MonoBehaviour
 {
-    static List<SpringForceGenerator2D> springForceGenerators;
-    static List<PointForceGenerator2D> pointForceGenerators;
-    static List<BouyancyForceGenerator2D> bouyancyForceGenerators;
+    static List<SpringForceGenerator2D> springForceGenerators = new List<SpringForceGenerator2D>();
+    static List<PointForceGenerator2D> pointForceGenerators = new List<PointForceGenerator2D>();
+    static List<BouyancyForceGenerator2D> bouyancyForceGenerators = new List<BouyancyForceGenerator2D>();
 
-    static public void AddForceGenerator(ref SpringForceGenerator2D fg)
+    static public void AddForceGenerator(SpringForceGenerator2D fg)
     {
         springForceGenerators.Add(fg);
     }
-    static public void AddForceGenerator(ref PointForceGenerator2D fg)
+    static public void AddForceGenerator(PointForceGenerator2D fg)
     {
         pointForceGenerators.Add(fg);
     }
-    static public void AddForceGenerator(ref BouyancyForceGenerator2D fg)
+    static public void AddForceGenerator(BouyancyForceGenerator2D fg)
     {
         bouyancyForceGenerators.Add(fg);
     }
 
-    static public void DeleteForceGenerator(ref BouyancyForceGenerator2D fg)
+    static public void DeleteForceGenerator(BouyancyForceGenerator2D fg)
     {
         bouyancyForceGenerators.Remove(fg);
     }
-    static public void DeleteForceGenerator(ref SpringForceGenerator2D fg)
+    static public void DeleteForceGenerator(SpringForceGenerator2D fg)
     {
         springForceGenerators.Remove(fg);
     }
-    static public void DeleteForceGenerator(ref PointForceGenerator2D fg)
+    static public void DeleteForceGenerator(PointForceGenerator2D fg)
     {
         pointForceGenerators.Remove(fg);
     }
