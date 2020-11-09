@@ -41,5 +41,8 @@ public class RodForceGenerator2D : ForceGenerator2D
 
         startingObject1.mpPhysicsData.accumulatedForces += diff;
         startingObject2.mpPhysicsData.accumulatedForces += diff;
+
+        startingObject1.mpPhysicsData.accumulatedForces -= diff;
+        startingObject2.mpPhysicsData.accumulatedForces -= diff;
     }
 }
