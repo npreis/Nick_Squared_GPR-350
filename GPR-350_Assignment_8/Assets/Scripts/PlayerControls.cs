@@ -48,29 +48,40 @@ public class PlayerControls : MonoBehaviour
         if(weaponChoice < particlePrefabs.Count)
         {
             GameObject projectile = Instantiate(particlePrefabs[weaponChoice],transform.position,transform.rotation);
-            projectile.GetComponent<Particle2D>().mpPhysicsData.vel = projectile.transform.up * projectile.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+            projectile.GetComponent<Particle2D>().mpPhysicsData.vel = projectile.transform.up * projectile.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
         }
         else if(weaponChoice == particlePrefabs.Count)
         {
             GameObject projectile1 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
-            projectile1.GetComponent<Particle2D>().mpPhysicsData.vel = projectile1.transform.up * projectile1.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+            projectile1.GetComponent<Particle2D>().mpPhysicsData.vel = projectile1.transform.up * projectile1.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
             GameObject projectile2 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
-            projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
-            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
+            Vector3 tmp = (projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude);
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y) * .5f;
+            projectile2.transform.position = projectile2.GetComponent<Particle2D>().mpPhysicsData.pos;
 
-            SpringForceGenerator2D fg = new SpringForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 2, 3);
+            SpringForceGenerator2D fg = new SpringForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 1, 4);
             ForceManager.AddForceGenerator(fg);
         }
         else
         {
             GameObject projectile1 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
-            projectile1.GetComponent<Particle2D>().mpPhysicsData.vel = projectile1.transform.up * projectile1.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+            projectile1.GetComponent<Particle2D>().mpPhysicsData.vel = projectile1.transform.up * projectile1.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
             GameObject projectile2 = Instantiate(particlePrefabs[0], transform.position, transform.rotation);
-            projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
-            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.normalized;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.vel = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
+            Vector3 tmp = projectile2.transform.up * projectile2.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
+            projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y) * .5f;
+            projectile2.transform.position = projectile2.GetComponent<Particle2D>().mpPhysicsData.pos;
 
+            //<<<<<<< Updated upstream
             RodForceGenerator2D fg = new RodForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 10, 3);
             ForceManager.AddForceGenerator(ref fg);
+//=======
+//            RodForceGenerator2D fg = new RodForceGenerator2D();
+//            fg.startingObject1 = projectile1.GetComponent<Particle2D>();
+//            fg.startingObject2 = projectile2.GetComponent<Particle2D>();
+//            //ForceManager.AddForceGenerator(fg);
+//>>>>>>> Stashed changes
         }
     }
 

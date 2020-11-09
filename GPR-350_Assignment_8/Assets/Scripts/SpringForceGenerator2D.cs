@@ -25,7 +25,6 @@ public class SpringForceGenerator2D : ForceGenerator2D
 
     public override void UpdateForce(ref PhysicsDataPtr pData, float dt)
     {
-
         Vector2 pos1 = object1.mpPhysicsData.pos;
         Vector2 pos2 = object2.mpPhysicsData.pos;
 
