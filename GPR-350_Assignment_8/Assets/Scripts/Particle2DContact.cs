@@ -34,10 +34,8 @@ public class Particle2DContact : MonoBehaviour
     public float CalculateSeparatingVelocity()
     {
         Vector2 relativeVel = mObj1.GetComponent<Particle2D>().mpPhysicsData.vel;
-        if(mObj2)
-        {
-            relativeVel -= mObj2.GetComponent<Particle2D>().mpPhysicsData.vel;
-        }
+        relativeVel -= mObj2.GetComponent<Particle2D>().mpPhysicsData.vel;
+
         return Vector2.Dot(relativeVel, mContactNormal);
     }
 
@@ -50,8 +48,8 @@ public class Particle2DContact : MonoBehaviour
         float newSepVel = -separatingVel * mRestitutionCoefficient;
 
         Vector2 velFromAcc = mObj1.GetComponent<Particle2D>().mpPhysicsData.acc;
-        if (mObj2)
-            velFromAcc -= mObj2.GetComponent<Particle2D>().mpPhysicsData.acc;
+        velFromAcc -= mObj2.GetComponent<Particle2D>().mpPhysicsData.acc;
+
         float accCausedSepVelocity = Vector2.Dot(velFromAcc, mContactNormal) * Time.deltaTime;
 
         if (accCausedSepVelocity < 0.0f)
@@ -64,8 +62,7 @@ public class Particle2DContact : MonoBehaviour
         float deltaVel = newSepVel - separatingVel;
 
         float totalInverseMass = (float)(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
-        if (mObj2)
-            totalInverseMass += (float)(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
+        totalInverseMass += (float)(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
 
         if (totalInverseMass <= 0)//all infinite massed objects
             return;
@@ -75,11 +72,9 @@ public class Particle2DContact : MonoBehaviour
 
         Vector2 newVelocity = mObj1.GetComponent<Particle2D>().mpPhysicsData.vel + impulsePerIMass * (float)(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
         mObj1.GetComponent<Particle2D>().mpPhysicsData.vel = newVelocity;
-        if (mObj2)
-        {
-            Vector2 newVelocity2 = mObj2.GetComponent<PhysicsDataPtr>.vel + impulsePerIMass * (float)-(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
-            mObj2.GetComponent<Particle2D>().mpPhysicsData.vel = newVelocity2;
-        }
+                
+        Vector2 newVelocity2 = mObj2.GetComponent<PhysicsDataPtr>.vel + impulsePerIMass * (float)-(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
+        mObj2.GetComponent<Particle2D>().mpPhysicsData.vel = newVelocity2;
     }
 
     void ResolveInterpolation()
@@ -88,8 +83,7 @@ public class Particle2DContact : MonoBehaviour
             return;
 
         float totalInverseMass = (float)(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
-        if (mObj2)
-            totalInverseMass += (float)(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
+        totalInverseMass += (float)(1.0 / mObj2.GetComponent<Particle2D>().mpPhysicsData.mass);
 
         if (totalInverseMass <= 0)//all infinite massed objects
             return;
@@ -97,10 +91,7 @@ public class Particle2DContact : MonoBehaviour
         Vector2 movePerIMass = mContactNormal * (mPenetration / totalInverseMass);
 
         mMove1 = movePerIMass * (float)(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
-        if (mObj2)
-            mMove2 = movePerIMass * (float)-(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
-        else
-            mMove2 = ZERO_VECTOR2D;
+        mMove2 = movePerIMass * (float)-(1.0 / mObj1.GetComponent<Particle2D>().mpPhysicsData.mass);
 
         Vector2 newPosition = (Vector2)mObj1.transform.position + mMove1;
         mObj1.transform.position = newPosition;
