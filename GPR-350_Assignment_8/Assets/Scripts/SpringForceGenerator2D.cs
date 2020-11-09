@@ -10,17 +10,18 @@ public class SpringForceGenerator2D : ForceGenerator2D
         object2 = o2;
         springConstant = springConst;
         restLength = length;
+        shouldEffectAll = false;
     }
 
-    public Particle2D object1;
-    public Particle2D object2;
-    public float springConstant;
-    public float restLength;
+    Particle2D object1;
+    Particle2D object2;
+    float springConstant;
+    float restLength;
 
     // Start is called before the first frame update
     void Start()
     {
-        shouldEffectAll = false;
+
     }
 
     public override void UpdateForce(ref PhysicsDataPtr pData, float dt)

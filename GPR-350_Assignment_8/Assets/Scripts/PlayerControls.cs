@@ -49,6 +49,9 @@ public class PlayerControls : MonoBehaviour
         {
             GameObject projectile = Instantiate(particlePrefabs[weaponChoice],transform.position,transform.rotation);
             projectile.GetComponent<Particle2D>().mpPhysicsData.vel = projectile.transform.up * projectile.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
+
+            BouyancyForceGenerator2D bfg = new BouyancyForceGenerator2D(projectile.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
+            ForceManager.AddForceGenerator(bfg);
         }
         else if(weaponChoice == particlePrefabs.Count)
         {
@@ -62,6 +65,10 @@ public class PlayerControls : MonoBehaviour
 
             SpringForceGenerator2D fg = new SpringForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 1, 4);
             ForceManager.AddForceGenerator(fg);
+            BouyancyForceGenerator2D bfg1 = new BouyancyForceGenerator2D(projectile1.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
+            ForceManager.AddForceGenerator(bfg1);
+            BouyancyForceGenerator2D bfg2 = new BouyancyForceGenerator2D(projectile2.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
+            ForceManager.AddForceGenerator(bfg2);
         }
         else
         {
@@ -76,12 +83,17 @@ public class PlayerControls : MonoBehaviour
             //<<<<<<< Updated upstream
             RodForceGenerator2D fg = new RodForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 10, 3);
             ForceManager.AddForceGenerator(ref fg);
-//=======
-//            RodForceGenerator2D fg = new RodForceGenerator2D();
-//            fg.startingObject1 = projectile1.GetComponent<Particle2D>();
-//            fg.startingObject2 = projectile2.GetComponent<Particle2D>();
-//            //ForceManager.AddForceGenerator(fg);
-//>>>>>>> Stashed changes
+            //=======
+            //            RodForceGenerator2D fg = new RodForceGenerator2D();
+            //            fg.startingObject1 = projectile1.GetComponent<Particle2D>();
+            //            fg.startingObject2 = projectile2.GetComponent<Particle2D>();
+            //            //ForceManager.AddForceGenerator(fg);
+            //>>>>>>> Stashed changes
+
+            BouyancyForceGenerator2D bfg1 = new BouyancyForceGenerator2D(projectile1.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
+            ForceManager.AddForceGenerator(bfg1);
+            BouyancyForceGenerator2D bfg2 = new BouyancyForceGenerator2D(projectile2.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
+            ForceManager.AddForceGenerator(bfg2);
         }
     }
 

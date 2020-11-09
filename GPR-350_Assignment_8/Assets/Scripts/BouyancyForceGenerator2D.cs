@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class BouyancyForceGenerator2D : ForceGenerator2D
 {
-    public Particle2D startingID1;
-    public float startingObjectVolume;
-    public float startingMaxDepth;
-    public float startingLiquidPlaneY;
-    public float startingLiquidDensity;
-
     Particle2D id1;
     float objectVolume;
     float maxDepth;
     float liquidPlaneY;
     float liquidDensity;
 
-    // Start is called before the first frame update
-    void Start()
+    public BouyancyForceGenerator2D(Particle2D startingID1, float startingObjectVolume, float startingMaxDepth, float startingLiquidPlaneY, float startingLiquidDensity)
     {
         id1 = startingID1;
         objectVolume = startingObjectVolume;
@@ -25,12 +18,6 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
         liquidPlaneY = startingLiquidPlaneY;
         liquidDensity = startingLiquidDensity;
         shouldEffectAll = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public override void UpdateForce(ref PhysicsDataPtr pData, float dt)
@@ -48,7 +35,7 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
         else
             yForce = liquidDensity * objectVolume * (yPos - maxDepth - liquidPlaneY) / (2 * maxDepth);
 
-        Vector2 force = new Vector2(0.0f, -Mathf.Abs(yForce));
+        Vector2 force = new Vector2(0.0f, Mathf.Abs(yForce));
         obj.accumulatedForces += force;
 
         id1.mpPhysicsData = obj;
