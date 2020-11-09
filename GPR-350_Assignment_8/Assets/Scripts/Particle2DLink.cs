@@ -23,7 +23,7 @@ public class Particle2DLink : MonoBehaviour
 
     protected float GetCurrentLength()
     {
-        float distance = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
+        float distance = (mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos);
         return distance;
     }
 }
@@ -45,10 +45,18 @@ public class Particle2DCable : Particle2DLink
             return;
 
         Vector2 normal = mObj1.GetComponent<Particle2D>().mpPhysicsData.pos - mObj2.GetComponent<Particle2D>().mpPhysicsData.pos;
-        normal = (Vector2)(1.0 / normal);
-        float mPenetration = length - mMaxLength;
+        normal = (1.0f / normal);
+        float penetration = length - mMaxLength;
 
-        Particle2DContact contact(GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2);
+        GameObject obj1 = mObj1;
+        GameObject obj2 = mObj2;
+        float restitutionCoefficient = mRestitution;
+        Vector2 contactNormal = normal;
+        float mPenetration = penetration;
+        Vector2 move1 = Vector2.zero;
+        Vector2 move2 = Vector2.zero;
+
+        Particle2DContact contact(obj1, obj2, restitutionCoefficient, contactNormal, mPenetration, move1, move2);
 
         contacts.Add(contact);
     }
@@ -87,8 +95,8 @@ public class Particle2DRod : Particle2DLink
             normal = mObj2.GetComponent<Particle2D>().mpPhysicsData.pos - mObj1.GetComponent<Particle2D>().mpPhysicsData.pos;
         }
 
-        normal = (float)(1.0f / normal);
-        Particle2DContact contact (GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float penetration, Vector2 move1, Vector2 move2);
+        normal = (1.0f / normal);
+        Particle2DContact contact (GameObject obj1, GameObject obj2, float restitutionCoefficient, Vector2 contactNormal, float mPenetration, Vector2 move1, Vector2 move2);
         contacts.Add(contact);
     }
 }
