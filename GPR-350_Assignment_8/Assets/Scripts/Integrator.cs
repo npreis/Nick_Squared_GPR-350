@@ -6,7 +6,7 @@ public class Integrator : MonoBehaviour
 {
     //public static int nextPhysicsID = 0;
 
-    static void Integrate(ref PhysicsData2D physData, float dt)
+    static public void Integrate(ref PhysicsDataPtr physData, float dt)
     {
         physData.pos += physData.vel * dt;
 
