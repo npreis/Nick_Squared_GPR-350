@@ -17,8 +17,8 @@ public struct PhysicsDataPtr
 
 public class Particle2D : MonoBehaviour
 {
-    double mLifeSpan = 0.0;
-    double mLifeLeft = 0.0;
+    public double mLifeSpan = 10.0;
+    public double mLifeLeft = 10.0;
     public GameObject mSprite;
     public PhysicsDataPtr mpPhysicsData;
     //Color32 mStartColor;
