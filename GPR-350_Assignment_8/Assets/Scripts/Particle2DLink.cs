@@ -37,7 +37,7 @@ public class Particle2DCable : Particle2DLink
 
     }
 
-    protected virtual void createContacts(Particle2DContact contacts)
+    protected virtual void createContacts(List<Particle2DContact> contacts)
     {
         float length = getCurrentLength();
         if (length < mMaxLength)
@@ -50,7 +50,7 @@ public class Particle2DCable : Particle2DLink
         Particle2DContact contact(PhysicsDataPtr obj1 = mObj1, PhysicsDataPtr obj2 = mObj2, float restitutionCoefficient = mRestitution, 
             Vector2 contactNormal = normal, float penetration = penetration, Vector2 move1 = ZERO_VECTOR2D, Vector2 move2 = ZERO_VECTOR2D);
 
-        contacts.push_back(contact);
+        contacts.Add(contact);
     }
 }
 
@@ -65,7 +65,7 @@ public class Particle2DRod : Particle2DLink
 
     }
 
-    protected virtual void createContacts(Particle2DContact contacts)
+    protected virtual void createContacts(List<Particle2DContact> contacts)
     {
         float length = getCurrentLength();
         if (length == mRodLength)
@@ -90,6 +90,6 @@ public class Particle2DRod : Particle2DLink
         normal.normalize();
         Particle2DContact contact(PhysicsDataPtr obj1 = mObj1, PhysicsDataPtr obj2 = mObj2, float restitutionCoefficient = mRestitution,
             Vector2 contactNormal = normal, float penetration = penetration, Vector2 move1 = ZERO_VECTOR2D, Vector2 move2 = ZERO_VECTOR2D);
-        contacts.push_back(contact);
+        contacts.Add(contact);
     }
 }
