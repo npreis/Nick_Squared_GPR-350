@@ -18,14 +18,14 @@ public class SpringForceGenerator2D : ForceGenerator2D
     float springConstant;
     float restLength;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public override void UpdateForce(ref PhysicsDataPtr pData, float dt)
     {
+        if(object1 == null || object2 == null)
+        {
+            ForceManager.DeleteForceGenerator(this);
+        }
+
+
         Vector2 pos1 = object1.mpPhysicsData.pos;
         Vector2 pos2 = object2.mpPhysicsData.pos;
 

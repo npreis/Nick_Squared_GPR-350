@@ -22,18 +22,27 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
 
     public override void UpdateForce(ref PhysicsDataPtr pData, float dt)
     {
+        if (id1 == null)
+        {
+            ForceManager.DeleteForceGenerator(this);
+        }
+
         //TODO LINK UP TO ID THROUGH STATIC CLASS
         PhysicsDataPtr obj = id1.mpPhysicsData;
 
         float yPos = obj.pos.y;
         float yForce = 0;
 
-        if (yPos >= liquidPlaneY - maxDepth)
+        if (yPos >= liquidPlaneY + maxDepth)
             return;
         else if (yPos <= liquidPlaneY - maxDepth)
+        {
             yForce = objectVolume * liquidDensity;
+        }
         else
+        {
             yForce = liquidDensity * objectVolume * (yPos - maxDepth - liquidPlaneY) / (2 * maxDepth);
+        }
 
         Vector2 force = new Vector2(0.0f, Mathf.Abs(yForce));
         obj.accumulatedForces += force;

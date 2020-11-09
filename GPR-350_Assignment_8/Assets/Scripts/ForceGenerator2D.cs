@@ -17,7 +17,7 @@ public struct PhysicsData2D
     public bool shouldIgnoreForces;
 }
 
-public abstract class ForceGenerator2D : MonoBehaviour
+public abstract class ForceGenerator2D
 {
     abstract public void UpdateForce(ref PhysicsDataPtr pData, float dt);
 
