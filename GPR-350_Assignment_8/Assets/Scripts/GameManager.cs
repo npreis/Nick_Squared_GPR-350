@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Vector2 xRange;
     public Vector2 yRange;
 
+    public Text scoreText;
     public int score = 0;
 
     BouyancyForceGenerator2D bfg;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreText.text = "" + score;
     }
 
     void FixedUpdate()

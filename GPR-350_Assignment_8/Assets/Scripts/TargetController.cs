@@ -13,6 +13,7 @@ public class TargetController : MonoBehaviour
         {
             if(p != GetComponent<Particle2D>() && (p.mpPhysicsData.pos-GetComponent<Particle2D>().mpPhysicsData.pos).magnitude <= radius)
             {
+                GameObject.FindObjectOfType<GameManager>().score++;
                 Destroy(p.gameObject);
                 Destroy(this.gameObject);
             }

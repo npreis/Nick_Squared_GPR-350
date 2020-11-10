@@ -50,7 +50,8 @@ public class Particle2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        Integrator.Integrate(ref mpPhysicsData, Time.fixedDeltaTime);
+        float dt = Time.fixedDeltaTime;
+        Integrator.Integrate(ref mpPhysicsData, dt);
     }
 
     public double GetPercentageOfLifeLeft()
