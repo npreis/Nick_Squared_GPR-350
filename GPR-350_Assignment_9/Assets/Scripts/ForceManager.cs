@@ -26,7 +26,7 @@ public class ForceManager : MonoBehaviour
     {
         bouyancyForceGenerators.Add(fg);
     }
-    static public void AddForceGenerator(ref RodForceGenerator2D fg)
+    static public void AddForceGenerator(RodForceGenerator2D fg)
     {
         rodForceGenerators.Add(fg);
     }
@@ -43,7 +43,7 @@ public class ForceManager : MonoBehaviour
     {
         pointToDelete.Add(fg);
     }
-    static public void DeleteForceGenerator(ref RodForceGenerator2D fg)
+    static public void DeleteForceGenerator(RodForceGenerator2D fg)
     {
         rodToDelete.Add(fg);
     }
