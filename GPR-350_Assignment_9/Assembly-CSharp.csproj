@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E7F485CD-D4D1-008B-B93A-5FECFD07FFC7}</ProjectGuid>
+    <ProjectGuid>{82493D63-EFC8-7E14-C6E8-BD588E64FA4C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BouyancyForceGenerator2D.cs" />
+     <Compile Include="Assets\Scripts\CollisonDetector.cs" />
      <Compile Include="Assets\Scripts\ContactResolver.cs" />
      <Compile Include="Assets\Scripts\ForceGenerator2D.cs" />
      <Compile Include="Assets\Scripts\ForceManager.cs" />
@@ -64,37 +65,38 @@
      <Compile Include="Assets\Scripts\Particle2D.cs" />
      <Compile Include="Assets\Scripts\Particle2DContact.cs" />
      <Compile Include="Assets\Scripts\Particle2DLink.cs" />
+     <Compile Include="Assets\Scripts\ParticleManager.cs" />
      <Compile Include="Assets\Scripts\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\PointForceGenerator2D.cs" />
      <Compile Include="Assets\Scripts\RodForceGenerator2D.cs" />
      <Compile Include="Assets\Scripts\SpringForceGenerator2D.cs" />
      <Compile Include="Assets\Scripts\TargetController.cs" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_8/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>D:/Nick_Squared_GPR-350/GPR-350_Assignment_9/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

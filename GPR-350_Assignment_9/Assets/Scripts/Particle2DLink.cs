@@ -30,7 +30,7 @@ public class Particle2DLink : MonoBehaviour
 
 public class Particle2DCable : Particle2DLink
 {
-    float mMaxLength;
+    float mMaxLength = 10.0f;
     float mRestitution;
 
     void Start()
@@ -62,9 +62,9 @@ public class Particle2DCable : Particle2DLink
 
 public class Particle2DRod : Particle2DLink
 {
-    float mRodLength;
+    float mRodLength = 10.0f;
     float mRestitution;
-    float mDamping;
+    float mDamping = 0.99f;
 
     void Start()
     {
