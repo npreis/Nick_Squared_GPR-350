@@ -26,7 +26,7 @@ public class ContactResolver : MonoBehaviour
         mIterations = iterations;
     }
 
-    void ResolveContacts(List<Particle2DContact> contacts, double dt)
+    void ResolveContacts(List<Particle2DContact> contacts)
     {
 		mIterationsUsed = 0;
 		while (mIterationsUsed < mIterations)
