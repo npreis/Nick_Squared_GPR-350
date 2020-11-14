@@ -48,7 +48,7 @@ public class ParticleManager : MonoBehaviour
                         //DeleteParticle(particles[j]);
                     //else
                     {
-                        if (false)//CollisionDetector.DetectCollision(particles[i],particles[j])
+                        if (CollisonDetector.DetectCollision(particles[i],particles[j]))
                         {
                             particlesToDelete.Add(particles[i]);
                             particlesToDelete.Add(particles[j]);

@@ -17,6 +17,7 @@ public struct PhysicsDataPtr
 
 public class Particle2D : MonoBehaviour
 {
+    public float radius;
     public double mLifeSpan = 0.0;
     double mLifeLeft = 0.0;
     public GameObject mSprite;
