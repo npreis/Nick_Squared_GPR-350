@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
-    List<Particle2D> particles = new List<Particle2D>();
+    
+    public List<Particle2D> particles = new List<Particle2D>();
     List<Particle2D> particlesToDelete = new List<Particle2D>();
     public GameObject particlePrefab;
 
     void AddParticle(Particle2D par)
     {
-        particles.Add(par);
+        if (!particlesToDelete.Contains(par))
+            particles.Add(par);
     }
 
     public void DeleteParticle(Particle2D par)
     {
         particlesToDelete.Add(par);
+        ClearOutDeadParticles();
     }
 
     void ClearOutDeadParticles()
     {
+        while(particles.Contains(null))
+        {
+            particles.Remove(null);
+        }
+
         while (particlesToDelete.Count != 0)
         {
             particles.Remove(particlesToDelete[0]);
@@ -33,15 +41,22 @@ public class ParticleManager : MonoBehaviour
     {
         for(int i = 0; i < particles.Count; i++)
         {
-            for(int j = i+1; j < particles.Count; j++)
-            {
-                if (false)//CollisionDetector.DetectCollision(particles[i],particles[j])
+            if (particles[i] != null)
+                for (int j = i + 1; j < particles.Count; j++)
                 {
-                    DeleteParticle(particles[i]);
-                    DeleteParticle(particles[j]);
-
+                    if (particles[j] != null)
+                        //DeleteParticle(particles[j]);
+                    //else
+                    {
+                        if (false)//CollisionDetector.DetectCollision(particles[i],particles[j])
+                        {
+                            particlesToDelete.Add(particles[i]);
+                            particlesToDelete.Add(particles[j]);
+                        }
+                    }
                 }
-            }
+            //else
+                //DeleteParticle(particles[i]);
         }
         ClearOutDeadParticles();
     }
@@ -60,5 +75,7 @@ public class ParticleManager : MonoBehaviour
         ForceManager.AddForceGenerator(bfg);
 
         AddParticle(newPar.GetComponent<Particle2D>());
+
+        Vector2.Dot(new Vector2(), new Vector2());
     }
 }

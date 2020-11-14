@@ -25,5 +25,6 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        ForceManager.ApplyAllForces(Time.fixedDeltaTime);
     }
 }

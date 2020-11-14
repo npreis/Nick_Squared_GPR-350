@@ -106,11 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mLifeSpan: 20
+  mLifeSpan: 10
   mSprite: {fileID: 0}
   mpPhysicsData:
     pos: {x: 0, y: 0}
-    vel: {x: 10, y: 0}
+    vel: {x: 3, y: 0}
     acc: {x: 0, y: -1}
     accumulatedForces: {x: 0, y: 0}
     inverseMass: 1

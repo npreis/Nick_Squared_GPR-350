@@ -67,4 +67,9 @@ public class Particle2D : MonoBehaviour
     {
         return 1.0 - GetPercentageOfLifeLeft();
     }
+
+    private void OnDestroy()
+    {
+        GameObject.FindObjectOfType<ParticleManager>().DeleteParticle(this);
+    }
 }
