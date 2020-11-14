@@ -32,7 +32,7 @@ public class RodForceGenerator2D : ForceGenerator2D
         Vector2 diff = pos1 - pos2;
         float dist = diff.magnitude;
 
-        if(dist > maxRodLength || dist < maxRodLength)
+        if(dist != maxRodLength)
         {
             dist = maxRodLength;
         }
