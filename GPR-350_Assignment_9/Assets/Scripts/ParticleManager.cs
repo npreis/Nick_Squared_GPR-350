@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
-    List<Particle2D> particles;
-    List<Particle2D> particlesToDelete;
+    List<Particle2D> particles = new List<Particle2D>();
+    List<Particle2D> particlesToDelete = new List<Particle2D>();
     public GameObject particlePrefab;
 
     void AddParticle(Particle2D par)
@@ -13,7 +13,7 @@ public class ParticleManager : MonoBehaviour
         particles.Add(par);
     }
 
-    void DeleteParticle(Particle2D par)
+    public void DeleteParticle(Particle2D par)
     {
         particlesToDelete.Add(par);
     }
@@ -46,7 +46,7 @@ public class ParticleManager : MonoBehaviour
         ClearOutDeadParticles();
     }
 
-    void GenerateRandomParticle()
+    public void GenerateRandomParticle()
     {
         float x = Random.Range(-Camera.main.orthographicSize, Camera.main.orthographicSize);
         float y = Random.Range(-Camera.main.orthographicSize * Camera.main.aspect,

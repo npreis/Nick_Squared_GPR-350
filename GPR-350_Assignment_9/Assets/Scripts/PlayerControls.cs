@@ -84,7 +84,7 @@ public class PlayerControls : MonoBehaviour
 
             //<<<<<<< Updated upstream
             RodForceGenerator2D fg = new RodForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 10, 3);
-            ForceManager.AddForceGenerator(ref fg);
+            ForceManager.AddForceGenerator(fg);
             //=======
             //            RodForceGenerator2D fg = new RodForceGenerator2D();
             //            fg.startingObject1 = projectile1.GetComponent<Particle2D>();
