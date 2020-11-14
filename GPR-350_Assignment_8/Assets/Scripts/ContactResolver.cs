@@ -52,22 +52,22 @@ public class ContactResolver : MonoBehaviour
 			{
 				if (contacts[i].mObj1 == contacts[maxIndex].mObj1)
 				{
-					contacts[i].mPenetration -= contacts[maxIndex].mMove1.Dot(contacts[i].mContactNormal);
+					contacts[i].mPenetration -= Vector2.Dot(contacts[maxIndex].mMove1, contacts[i].mContactNormal);
 				}
 				else if (contacts[i].mObj1 == contacts[maxIndex].mObj2)
 				{
-					contacts[i].mPenetration -= contacts[maxIndex].mMove2.Dot(contacts[i].mContactNormal);
+					contacts[i].mPenetration -= Vector2.Dot(contacts[maxIndex].mMove2, contacts[i].mContactNormal);
 				}
 
 				if (contacts[i].mObj2)
 				{
 					if (contacts[i].mObj2 == contacts[maxIndex].mObj1)
 					{
-						contacts[i].mPenetration += contacts[maxIndex].mMove1.Dot(contacts[i].mContactNormal);
+						contacts[i].mPenetration += Vector2.Dot(contacts[maxIndex].mMove1, contacts[i].mContactNormal);
 					}
 					else if (contacts[i].mObj2 == contacts[maxIndex].mObj2)
 					{
-						contacts[i].mPenetration -= contacts[maxIndex].mMove2.Dot(contacts[i].mContactNormal);
+						contacts[i].mPenetration -= Vector2.Dot(contacts[maxIndex].mMove2, contacts[i].mContactNormal);
 					}
 				}
 			}
