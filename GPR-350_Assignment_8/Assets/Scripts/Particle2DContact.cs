@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Particle2DContact : MonoBehaviour
 {
-    GameObject mObj1;
-    GameObject mObj2;
-    float mRestitutionCoefficient = 0.0f;
+    public GameObject mObj1;
+    public GameObject mObj2;
+    public float mRestitutionCoefficient = 0.0f;
     public Vector2 mContactNormal;
-    float mPenetration = 0.0f;
+    public float mPenetration = 0.0f;
     public Vector2 mMove1;
     public Vector2 mMove2;
 
@@ -35,7 +35,7 @@ public class Particle2DContact : MonoBehaviour
         Resolve();
     }
 
-    void Resolve()
+    public void Resolve()
     {
         ResolveVelocity();
         ResolveInterpolation();
@@ -49,7 +49,7 @@ public class Particle2DContact : MonoBehaviour
         return Vector2.Dot(relativeVel, mContactNormal);
     }
 
-    void ResolveVelocity()
+    public void ResolveVelocity()
     {
         float separatingVel = CalculateSeparatingVelocity();
         if (separatingVel > 0.0f)//already separating so need to resolve
@@ -87,7 +87,7 @@ public class Particle2DContact : MonoBehaviour
         mObj2.GetComponent<Particle2D>().mpPhysicsData.vel = newVelocity2;
     }
 
-    void ResolveInterpolation()
+    public void ResolveInterpolation()
     {
         if (mPenetration <= 0.0f)
             return;

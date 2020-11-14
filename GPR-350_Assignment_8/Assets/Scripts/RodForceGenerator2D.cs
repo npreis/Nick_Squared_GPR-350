@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RodForceGenerator2D : ForceGenerator2D
 {
+    public Particle2D startingObject1;
+    public Particle2D startingObject2;
+    public static float maxRodLength;
+    public float mRestitution;
+
     public RodForceGenerator2D(Particle2D object1, Particle2D object2, float rodLength, float restitution)
     {
         startingObject1 = object1;
@@ -11,11 +16,6 @@ public class RodForceGenerator2D : ForceGenerator2D
         maxRodLength = rodLength;
         mRestitution = restitution;
     }
-
-    public Particle2D startingObject1;
-    public Particle2D startingObject2;
-    public float maxRodLength;
-    public float mRestitution;
 
     // Start is called before the first frame update
     void Start()
