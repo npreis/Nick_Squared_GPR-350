@@ -113,6 +113,6 @@ MonoBehaviour:
     vel: {x: 10, y: 0}
     acc: {x: 0, y: -1}
     accumulatedForces: {x: 0, y: 0}
-    inverseMass: 1
+    inverseMass: 2
     dampingConstant: 0.9
     shouldIgnoreForces: 0
