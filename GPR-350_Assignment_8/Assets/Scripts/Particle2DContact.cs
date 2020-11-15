@@ -85,6 +85,8 @@ public class Particle2DContact : MonoBehaviour
                 
         Vector2 newVelocity2 = mObj2.GetComponent<Particle2D>().mpPhysicsData.vel + impulsePerIMass * (float)-(mObj2.GetComponent<Particle2D>().mpPhysicsData.inverseMass);
         mObj2.GetComponent<Particle2D>().mpPhysicsData.vel = newVelocity2;
+
+        UnityEngine.Debug.Log("Resolve Forces.");
     }
 
     public void ResolveInterpolation()
