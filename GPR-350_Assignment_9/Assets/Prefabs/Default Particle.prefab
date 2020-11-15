@@ -106,14 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.25
-  mLifeSpan: 50
+  radius: 0
+  mLifeSpan: 20
   mSprite: {fileID: 0}
   mpPhysicsData:
     pos: {x: 0, y: 0}
-    vel: {x: 3, y: 0}
+    vel: {x: 5, y: 0}
     acc: {x: 0, y: -1}
     accumulatedForces: {x: 0, y: 0}
-    inverseMass: 0.2
+    inverseMass: 3
     dampingConstant: 0.9
     shouldIgnoreForces: 0
