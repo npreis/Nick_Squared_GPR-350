@@ -17,7 +17,7 @@ public class BouyancyForceGenerator2D : ForceGenerator2D
         maxDepth = startingMaxDepth;
         liquidPlaneY = startingLiquidPlaneY;
         liquidDensity = startingLiquidDensity;
-        shouldEffectAll = true;
+        shouldEffectAll = false;
     }
 
     public override void UpdateForce(ref PhysicsDataPtr pData, float dt)

@@ -30,8 +30,9 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        float delta = Time.fixedDeltaTime;
         CheckForTarget();
-        ForceManager.ApplyAllForces(Time.fixedDeltaTime);
+        ForceManager.ApplyAllForces(delta);
     }
 
     void CheckForTarget()

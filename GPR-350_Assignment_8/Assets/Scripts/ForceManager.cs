@@ -100,18 +100,8 @@ public class ForceManager : MonoBehaviour
         }
         foreach (BouyancyForceGenerator2D fg in bouyancyForceGenerators)
         {
-            if (fg.GetShouldEffectAll())
-            {
-                foreach (Particle2D particle2D in GameObject.FindObjectsOfType<Particle2D>())
-                {
-                    fg.UpdateForce(ref particle2D.mpPhysicsData, dt);
-                }
-            }
-            else
-            {
-                PhysicsDataPtr p = new PhysicsDataPtr();
-                fg.UpdateForce(ref p, dt);
-            }
+             PhysicsDataPtr p = new PhysicsDataPtr();
+             fg.UpdateForce(ref p, dt);
         }
 
         while (rodToDelete.Count != 0)
