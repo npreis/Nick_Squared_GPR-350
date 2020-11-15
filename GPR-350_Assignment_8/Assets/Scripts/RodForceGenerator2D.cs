@@ -17,12 +17,6 @@ public class RodForceGenerator2D : ForceGenerator2D
         mRestitution = restitution;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     public override void UpdateForce(ref PhysicsDataPtr pData, float dt)
     {
@@ -31,10 +25,16 @@ public class RodForceGenerator2D : ForceGenerator2D
 
         Vector2 diff = pos1 - pos2;
         float dist = diff.magnitude;
+        
+        Vector2 vel1 = startingObject1.mpPhysicsData.vel;
+        Vector2 vel2 = startingObject2.mpPhysicsData.vel;
 
-        if(dist != maxRodLength)
+        vel1 = vel2;
+
+        if (dist != maxRodLength)
         {
             dist = maxRodLength;
+            vel1 = vel2;
         }
 
         diff.Normalize();

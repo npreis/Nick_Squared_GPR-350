@@ -82,15 +82,8 @@ public class PlayerControls : MonoBehaviour
             projectile2.GetComponent<Particle2D>().mpPhysicsData.pos += new Vector2(tmp.x, tmp.y).normalized * 3.0f;
             projectile2.transform.position = projectile2.GetComponent<Particle2D>().mpPhysicsData.pos;
 
-            //<<<<<<< Updated upstream
             RodForceGenerator2D fg = new RodForceGenerator2D(projectile1.GetComponent<Particle2D>(), projectile2.GetComponent<Particle2D>(), 10, 3);
             ForceManager.AddForceGenerator(ref fg);
-            //=======
-            //            RodForceGenerator2D fg = new RodForceGenerator2D();
-            //            fg.startingObject1 = projectile1.GetComponent<Particle2D>();
-            //            fg.startingObject2 = projectile2.GetComponent<Particle2D>();
-            //            //ForceManager.AddForceGenerator(fg);
-            //>>>>>>> Stashed changes
 
             BouyancyForceGenerator2D bfg1 = new BouyancyForceGenerator2D(projectile1.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
             ForceManager.AddForceGenerator(bfg1);
