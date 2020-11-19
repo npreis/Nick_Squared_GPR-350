@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
+  radius: 0.25
   mLifeSpan: 20
   mSprite: {fileID: 0}
   mpPhysicsData:

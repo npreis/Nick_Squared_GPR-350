@@ -9,7 +9,7 @@ public class CollisonDetector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class CollisonDetector : MonoBehaviour
     {
         bool isCollision = false;
 
-        if(Vector2.Distance(obj1.mpPhysicsData.pos,obj2.mpPhysicsData.pos) <= obj1.radius+obj2.radius)
+        if (Vector2.Distance(obj1.mpPhysicsData.pos, obj2.mpPhysicsData.pos) <= obj1.radius + obj2.radius)
         {
             isCollision = true;
         }
