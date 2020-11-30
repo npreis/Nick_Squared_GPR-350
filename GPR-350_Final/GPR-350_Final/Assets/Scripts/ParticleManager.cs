@@ -9,7 +9,7 @@ public class ParticleManager : MonoBehaviour
     List<Particle2D> particlesToDelete = new List<Particle2D>();
     public GameObject particlePrefab;
 
-    void AddParticle(Particle2D par)
+    public void AddParticle(Particle2D par)
     {
         if (!particlesToDelete.Contains(par))
             particles.Add(par);

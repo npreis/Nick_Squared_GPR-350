@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 647029922}
   - component: {fileID: 647029921}
   - component: {fileID: 647029920}
+  - component: {fileID: 647029924}
   m_Layer: 0
   m_Name: Planet_Object
   m_TagString: Untagged
@@ -214,6 +215,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647029924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647029919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  mLifeSpan: 10000000
+  mSprite: {fileID: 0}
+  mpPhysicsData:
+    pos: {x: 0, y: 0}
+    vel: {x: 0, y: 0}
+    acc: {x: 0, y: 0}
+    accumulatedForces: {x: 0, y: 0}
+    inverseMass: 100
+    dampingConstant: 1
+    shouldIgnoreForces: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +312,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 3.5e-44, y: 1.6853776e+22, z: 4.822217e+13, w: 2.0066986}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -401,6 +425,7 @@ GameObject:
   - component: {fileID: 1063586562}
   - component: {fileID: 1063586561}
   - component: {fileID: 1063586560}
+  - component: {fileID: 1063586564}
   m_Layer: 0
   m_Name: Star_Object
   m_TagString: Untagged
@@ -481,4 +506,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063586564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063586559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  mLifeSpan: 10000000
+  mSprite: {fileID: 0}
+  mpPhysicsData:
+    pos: {x: 0, y: 0}
+    vel: {x: 0, y: 0}
+    acc: {x: 0, y: 0}
+    accumulatedForces: {x: 0, y: 0}
+    inverseMass: 0.1
+    dampingConstant: 0
+    shouldIgnoreForces: 0
+--- !u!1 &2075678676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2075678680}
+  - component: {fileID: 2075678679}
+  - component: {fileID: 2075678678}
+  - component: {fileID: 2075678677}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2075678677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075678676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26c11d0fb0da464f8fddcc063e42402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: []
+  particlePrefab: {fileID: 9154635159706158098, guid: 8d37b3201b67cef42ade26bb89399e4a,
+    type: 3}
+--- !u!114 &2075678678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075678676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb787a6b37d60fc469b3d41f35008260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2075678679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075678676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c6de913ea9f494f9fd48b6897d2a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerOfConstant: -5
+--- !u!4 &2075678680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075678676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

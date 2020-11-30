@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlanetaryForceGenerator : ForceGenerator2D
 {
+
     public PlanetaryForceGenerator(Particle2D object1)
     {
-        universalGavitationalConstant = 6.6740f * Mathf.Pow(10.0f, -11);
+        universalGavitationalConstant = 6.6740f * Mathf.Pow(10.0f, powerOfConstant);
         mPlanet = object1;
     }
 
     public Particle2D mPlanet;
 
-    private float universalGavitationalConstant;
+    static public int powerOfConstant = -11;
+    static private float universalGavitationalConstant;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +33,14 @@ public class PlanetaryForceGenerator : ForceGenerator2D
         }
 
         Vector2 radiusVec = mPlanet.mpPhysicsData.pos - pData.pos;
+
+        if(radiusVec.magnitude == 0)
+        {
+            return;
+        }
+
         radiusVec *= .5f;
-        float gravitationalForce = universalGavitationalConstant * (1 / mPlanet.mpPhysicsData.inverseMass) * (1 / pData.inverseMass) / (radiusVec.magnitude * radiusVec.magnitude);
+        float gravitationalForce = (universalGavitationalConstant * (1 / mPlanet.mpPhysicsData.inverseMass) * (1 / pData.inverseMass)) / (radiusVec.magnitude * radiusVec.magnitude);
         radiusVec.Normalize();
         pData.accumulatedForces += gravitationalForce * radiusVec;
         mPlanet.mpPhysicsData.accumulatedForces -= gravitationalForce * radiusVec;
