@@ -71,11 +71,11 @@ public class ParticleManager : MonoBehaviour
         newPar.GetComponent<Particle2D>().mpPhysicsData.vel = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0.0f)
             * newPar.GetComponent<Particle2D>().mpPhysicsData.vel.magnitude;
 
-        BouyancyForceGenerator2D bfg = new BouyancyForceGenerator2D(newPar.GetComponent<Particle2D>(), .5f, .25f, 0, 1.5f);
-        ForceManager.AddForceGenerator(bfg);
+        PlanetaryForceGenerator pfg = new PlanetaryForceGenerator(newPar.GetComponent<Particle2D>());
+        ForceManager.AddForceGenerator(pfg);
 
         AddParticle(newPar.GetComponent<Particle2D>());
 
-        Vector2.Dot(new Vector2(), new Vector2());
+        //Vector2.Dot(new Vector2(), new Vector2());
     }
 }
