@@ -232,7 +232,7 @@ MonoBehaviour:
   mSprite: {fileID: 0}
   mpPhysicsData:
     pos: {x: 0, y: 0}
-    vel: {x: 0, y: 0}
+    vel: {x: 0, y: 1}
     acc: {x: 0, y: 0}
     accumulatedForces: {x: 0, y: 0}
     inverseMass: 100
@@ -312,7 +312,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.5e-44, y: 1.6853776e+22, z: 4.822217e+13, w: 2.0066986}
+  m_BoundingSphereOverride: {x: 2.559e-42, y: 1.01e-43, z: 980710.94, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c6de913ea9f494f9fd48b6897d2a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerOfConstant: -5
+  powerOfConstant: -2
 --- !u!4 &2075678680
 Transform:
   m_ObjectHideFlags: 0
