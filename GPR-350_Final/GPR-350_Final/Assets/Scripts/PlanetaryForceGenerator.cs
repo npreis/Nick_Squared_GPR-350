@@ -39,7 +39,7 @@ public class PlanetaryForceGenerator : ForceGenerator2D
             return;
         }
 
-        radiusVec *= .5f;
+        //radiusVec *= .5f;
         float gravitationalForce = (universalGavitationalConstant * (1 / mPlanet.mpPhysicsData.inverseMass) * (1 / pData.inverseMass)) / (radiusVec.magnitude * radiusVec.magnitude);
         radiusVec.Normalize();
         pData.accumulatedForces += gravitationalForce * radiusVec;
