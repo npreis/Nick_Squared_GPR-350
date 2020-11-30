@@ -11,11 +11,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        particleManager = GetComponent<ParticleManager>();
-        for(int i = 0; i < numberSpawned; i++)
-        {
-            particleManager.GenerateRandomParticle();
-        }
+
     }
 
     // Update is called once per frame
