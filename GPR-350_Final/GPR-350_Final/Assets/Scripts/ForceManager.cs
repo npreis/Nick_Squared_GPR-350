@@ -12,6 +12,8 @@ public class ForceManager : MonoBehaviour
     static List<BouyancyForceGenerator2D> bouyancyToDelete = new List<BouyancyForceGenerator2D>();
     static List<RodForceGenerator2D> rodForceGenerators = new List<RodForceGenerator2D>();
     static List<RodForceGenerator2D> rodToDelete = new List<RodForceGenerator2D>();
+    static List<PlanetaryForceGenerator> planetaryForceGenerators = new List<PlanetaryForceGenerator>();
+    static List<PlanetaryForceGenerator> planetaryToDelete = new List<PlanetaryForceGenerator>();
 
 
     static public void AddForceGenerator(SpringForceGenerator2D fg)
@@ -30,6 +32,10 @@ public class ForceManager : MonoBehaviour
     {
         rodForceGenerators.Add(fg);
     }
+    static public void AddForceGenerator(PlanetaryForceGenerator fg)
+    {
+        planetaryForceGenerators.Add(fg);
+    }
 
     static public void DeleteForceGenerator(BouyancyForceGenerator2D fg)
     {
@@ -46,6 +52,10 @@ public class ForceManager : MonoBehaviour
     static public void DeleteForceGenerator(RodForceGenerator2D fg)
     {
         rodToDelete.Add(fg);
+    }
+    static public void DeleteForceGenerator(PlanetaryForceGenerator fg)
+    {
+        planetaryToDelete.Add(fg);
     }
 
     static public void ApplyAllForces(float dt)
@@ -122,6 +132,20 @@ public class ForceManager : MonoBehaviour
             {
                 PhysicsDataPtr p = new PhysicsDataPtr();
                 fg.UpdateForce(ref p, dt);
+            }
+        }
+
+        while (planetaryToDelete.Count != 0)
+        {
+            planetaryForceGenerators.Remove(planetaryToDelete[0]);
+            planetaryToDelete.RemoveAt(0);
+        }
+
+        foreach (PlanetaryForceGenerator fg in planetaryForceGenerators)
+        {
+            foreach (Particle2D particle2D in GameObject.FindObjectsOfType<Particle2D>())
+            {
+                fg.UpdateForce(ref particle2D.mpPhysicsData, dt);
             }
         }
     }
