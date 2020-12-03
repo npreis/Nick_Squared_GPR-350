@@ -230,10 +230,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.5
   mLifeSpan: 10000000
-  mSprite: {fileID: 1063586559}
+  mSprite: {fileID: 647029919}
   mpPhysicsData:
     pos: {x: 0, y: 0}
-    vel: {x: 0, y: 0.8}
+    vel: {x: 0, y: 1}
     acc: {x: 0, y: 0}
     accumulatedForces: {x: 0, y: 0}
     inverseMass: 100
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1.25
   mLifeSpan: 10000000
-  mSprite: {fileID: 647029919}
+  mSprite: {fileID: 1063586559}
   mpPhysicsData:
     pos: {x: 0, y: 0}
     vel: {x: 0, y: 0}
