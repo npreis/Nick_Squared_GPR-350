@@ -233,7 +233,7 @@ MonoBehaviour:
   mSprite: {fileID: 647029919}
   mpPhysicsData:
     pos: {x: 0, y: 0}
-    vel: {x: 0, y: 1}
+    vel: {x: 0, y: 0.5}
     acc: {x: 0, y: 0}
     accumulatedForces: {x: 0, y: 0}
     inverseMass: 100
@@ -383,7 +383,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -528,7 +528,7 @@ MonoBehaviour:
     vel: {x: 0, y: 0}
     acc: {x: 0, y: 0}
     accumulatedForces: {x: 0, y: 0}
-    inverseMass: 0.1
+    inverseMass: 0.3
     dampingConstant: 0
     shouldIgnoreForces: 0
 --- !u!1 &1594101818
