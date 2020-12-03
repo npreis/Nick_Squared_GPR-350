@@ -227,9 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
+  radius: 0.5
   mLifeSpan: 10000000
-  mSprite: {fileID: 0}
+  mSprite: {fileID: 1063586559}
   mpPhysicsData:
     pos: {x: 0, y: 0}
     vel: {x: 0, y: 1}
@@ -519,9 +519,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133f613320b9be4ea1f4d147c1960ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
+  radius: 1.25
   mLifeSpan: 10000000
-  mSprite: {fileID: 0}
+  mSprite: {fileID: 647029919}
   mpPhysicsData:
     pos: {x: 0, y: 0}
     vel: {x: 0, y: 0}
@@ -588,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c6de913ea9f494f9fd48b6897d2a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerOfConstant: -2
+  powerOfConstant: -1
 --- !u!4 &2075678680
 Transform:
   m_ObjectHideFlags: 0
