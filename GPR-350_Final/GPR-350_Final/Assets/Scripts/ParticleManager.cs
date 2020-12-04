@@ -50,8 +50,7 @@ public class ParticleManager : MonoBehaviour
                     {
                         if (CollisonDetector.DetectCollision(particles[i], particles[j]))
                         {
-                            particlesToDelete.Add(particles[i]);
-                            particlesToDelete.Add(particles[j]);
+                            HandlePlanetaryCollision(particles[i], particles[j]);
                         }
                     }
                 }
@@ -59,6 +58,27 @@ public class ParticleManager : MonoBehaviour
             //DeleteParticle(particles[i]);
         }
         ClearOutDeadParticles();
+    }
+
+    public float coeffiientOfRestitution = .9f;
+    void HandlePlanetaryCollision(Particle2D obj1, Particle2D obj2)
+    {
+        Vector2 normal = (obj1.mpPhysicsData.pos - obj2.mpPhysicsData.pos).normalized;
+        float seperationVelocity = coeffiientOfRestitution * Vector2.Dot(obj1.mpPhysicsData.vel - obj2.mpPhysicsData.vel, normal);
+
+        if (seperationVelocity > 0) return;
+
+        float newSepVel = -seperationVelocity * coeffiientOfRestitution;
+        float deltaVel = newSepVel - seperationVelocity;
+
+        float totalInverseMass = obj1.mpPhysicsData.inverseMass + obj2.mpPhysicsData.inverseMass;
+
+        float impulse = deltaVel / totalInverseMass;
+
+        Vector2 impulsePerIMass = normal * impulse;
+
+        obj1.mpPhysicsData.vel += impulsePerIMass * obj1.mpPhysicsData.inverseMass;
+        obj2.mpPhysicsData.vel += impulsePerIMass * -obj2.mpPhysicsData.inverseMass;
     }
 
     public void GenerateRandomParticle()
