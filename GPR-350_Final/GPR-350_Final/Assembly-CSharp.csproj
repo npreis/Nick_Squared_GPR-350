@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\ForceManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Integrator.cs" />
+     <Compile Include="Assets\Scripts\ObjectSpawn.cs" />
      <Compile Include="Assets\Scripts\Particle2D.cs" />
      <Compile Include="Assets\Scripts\Particle2DContact.cs" />
      <Compile Include="Assets\Scripts\Particle2DLink.cs" />
