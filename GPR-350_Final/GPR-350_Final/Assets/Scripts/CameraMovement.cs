@@ -47,6 +47,10 @@ public class CameraMovement : MonoBehaviour
         if(d > 0)
         {
             Camera.main.orthographicSize -= zoom;
+            if(Camera.main.orthographicSize <= 1.0)
+            {
+                Camera.main.orthographicSize = 1.0f;
+            }
         }
         if(d < 0)
         {
