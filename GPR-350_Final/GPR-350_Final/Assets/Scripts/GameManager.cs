@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
             ForceManager.AddForceGenerator(new PlanetaryForceGenerator(par));
         }
 
+
     }
 
     // Update is called once per frame
