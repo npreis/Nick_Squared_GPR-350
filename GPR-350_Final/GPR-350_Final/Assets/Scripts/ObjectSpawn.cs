@@ -23,6 +23,7 @@ public class ObjectSpawn : MonoBehaviour
 
             Instantiate(asteroid).transform.position = changeZ;
             GetComponent<ParticleManager>().AddParticle(asteroid.GetComponent<Particle2D>());
+            ForceManager.AddForceGenerator(new PlanetaryForceGenerator(asteroid.GetComponent<Particle2D>()));
         }
     }
 }
