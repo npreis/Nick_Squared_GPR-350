@@ -22,6 +22,7 @@ public class ObjectSpawn : MonoBehaviour
             Vector3 changeZ = new Vector3(origin.x, origin.y, asteroid.transform.position.z);
 
             Instantiate(asteroid).transform.position = changeZ;
+            GetComponent<ParticleManager>().AddParticle(asteroid.GetComponent<Particle2D>());
         }
     }
 }
