@@ -73,4 +73,20 @@ public class Particle2D : MonoBehaviour
     {
         GameObject.FindObjectOfType<ParticleManager>().DeleteParticle(this);
     }
+
+    public float GetMass()
+    {
+        return 1 / mpPhysicsData.inverseMass;
+    }
+
+    public void AddMass(float massToAdd)
+    {
+        float mass = GetMass();
+        float volume = 4.0f / 3.0f * Mathf.PI * Mathf.Pow(radius, 3);
+        float sizePerInverseMass = volume / mass ;
+        mpPhysicsData.inverseMass = 1 / (mass + massToAdd);
+        volume = sizePerInverseMass * (mass + massToAdd);
+        radius = Mathf.Pow((volume * 3) / (Mathf.PI * 4), 1.0f / 3.0f);
+        transform.localScale = new Vector3(1, 1, 1) * radius * 2.0f;
+    }
 }

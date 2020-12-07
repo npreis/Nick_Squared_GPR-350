@@ -39,10 +39,11 @@ public class ParticleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < particles.Count; i++)
+        int count = particles.Count;
+        for (int i = 0; i < count; i++)
         {
             if (particles[i] != null)
-                for (int j = i + 1; j < particles.Count; j++)
+                for (int j = i + 1; j < count; j++)
                 {
                     if (particles[j] != null)
                     //DeleteParticle(particles[j]);
@@ -51,6 +52,7 @@ public class ParticleManager : MonoBehaviour
                         if (CollisonDetector.DetectCollision(particles[i], particles[j]))
                         {
                             HandlePlanetaryCollision(particles[i], particles[j]);
+                            AddStyleToCollision(particles[i], particles[j]);
                         }
                     }
                 }
@@ -79,6 +81,72 @@ public class ParticleManager : MonoBehaviour
 
         obj1.mpPhysicsData.vel += impulsePerIMass * obj1.mpPhysicsData.inverseMass;
         obj2.mpPhysicsData.vel += impulsePerIMass * -obj2.mpPhysicsData.inverseMass;
+    }
+
+    public int piecesPlanetsBreakInto;
+    public float ratioToIgnoreBreakage = 10;
+    void AddStyleToCollision(Particle2D obj1, Particle2D obj2)
+    {
+        bool obj1Smaller = obj1.mpPhysicsData.inverseMass > obj2.mpPhysicsData.inverseMass;
+        Particle2D lesserObj = obj1Smaller ? obj1 : obj2;
+        Particle2D greaterObj = obj1Smaller ? obj2 : obj1;
+
+        float greaterMass = greaterObj.GetMass();
+        float lesserMass = lesserObj.GetMass();
+
+        if (lesserMass * ratioToIgnoreBreakage <= greaterMass)
+        {
+            greaterObj.AddMass(lesserMass);
+            particlesToDelete.Add(lesserObj);
+        }
+        else if (1 - lesserMass / greaterMass < 1 / ratioToIgnoreBreakage)
+        {
+            greaterObj.AddMass(lesserMass);
+            particlesToDelete.Add(lesserObj);
+            greaterObj.mpPhysicsData.vel = (greaterObj.mpPhysicsData.vel + lesserObj.mpPhysicsData.vel).normalized * greaterObj.mpPhysicsData.vel.magnitude;
+
+            Vector2 diff = greaterObj.mpPhysicsData.pos - lesserObj.mpPhysicsData.pos;
+            Vector2 offset = -diff.normalized * greaterObj.radius / diff.magnitude;
+
+            greaterObj.mpPhysicsData.pos += offset;
+            return;
+        }
+        else
+        {
+            float proportion = (lesserMass / greaterMass);
+            greaterObj.AddMass(lesserMass * (1 - proportion));
+            lesserObj.AddMass(-lesserMass * (1 - proportion));
+
+            if(piecesPlanetsBreakInto > 1)
+            {
+                GameObject[] newParts = new GameObject[piecesPlanetsBreakInto];
+                lesserMass = lesserObj.GetMass();
+                for (int i = 0; i < piecesPlanetsBreakInto; i++)
+                {
+                    newParts[i] = Instantiate(lesserObj.gameObject, lesserObj.transform.position, lesserObj.transform.rotation);
+                }
+
+                float angleSpread = 180.0f / (piecesPlanetsBreakInto + 1);
+                Vector2 oldVec = lesserObj.mpPhysicsData.vel;
+                Vector2 newVel = new Vector2(Mathf.Cos(180)*oldVec.x - Mathf.Sin(180) * oldVec.y,
+                                                Mathf.Sin(180) * oldVec.x + Mathf.Cos(180) * oldVec.y);
+
+                for(int i = 0; i < piecesPlanetsBreakInto; i++)
+                {
+                    Particle2D par = newParts[i].GetComponent<Particle2D>();
+                    par.AddMass(-(lesserMass * (1-1.0f/piecesPlanetsBreakInto)));
+                    newVel = new Vector2(Mathf.Cos(angleSpread) * newVel.x - Mathf.Sin(angleSpread) * newVel.y,
+                                            Mathf.Sin(angleSpread) * newVel.x + Mathf.Cos(angleSpread) * newVel.y);
+                    par.mpPhysicsData.vel = newVel; //* piecesPlanetsBreakInto;
+                    par.mpPhysicsData.pos += newVel.normalized * (1.0f / (Mathf.Cos(90 - (angleSpread / 2.0f)) / par.radius));// par.radius/2);
+                    newParts[i].transform.position = par.mpPhysicsData.pos;
+                    newParts[i].GetComponent<Particle2D>().mpPhysicsData = par.mpPhysicsData;
+                    AddParticle(newParts[i].GetComponent<Particle2D>());
+                    ForceManager.AddForceGenerator(new PlanetaryForceGenerator(newParts[i].GetComponent<Particle2D>()));
+                }
+                particlesToDelete.Add(lesserObj);
+            }
+        }
     }
 
     public void GenerateRandomParticle()
