@@ -405,7 +405,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 99c25cd846ead7f48a23844303626b49, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -828,8 +828,8 @@ MonoBehaviour:
   particles: []
   particlePrefab: {fileID: 9154635159706158098, guid: 8d37b3201b67cef42ade26bb89399e4a,
     type: 3}
-  coeffiientOfRestitution: 0.9
-  piecesPlanetsBreakInto: 2
+  coeffiientOfRestitution: 1
+  piecesPlanetsBreakInto: 1
   ratioToIgnoreBreakage: 15
 --- !u!114 &2075678678
 MonoBehaviour:

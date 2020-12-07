@@ -18,8 +18,8 @@ public struct PhysicsDataPtr
 public class Particle2D : MonoBehaviour
 {
     public float radius;
-    public double mLifeSpan = 0.0;
-    double mLifeLeft = 0.0;
+    //public double mLifeSpan = 0.0;
+    //double mLifeLeft = 0.0;
     public GameObject mSprite;
     public PhysicsDataPtr mpPhysicsData;
     //Color32 mStartColor;
@@ -33,7 +33,7 @@ public class Particle2D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mLifeLeft = mLifeSpan;
+        //mLifeLeft = mLifeSpan;
         mpPhysicsData.pos = transform.position;
     }
 
@@ -41,11 +41,11 @@ public class Particle2D : MonoBehaviour
 
     void Update()
     {
-        mLifeLeft -= Time.deltaTime;
-        if (mLifeLeft <= 0.0)
-        {
-            Destroy(gameObject);
-        }
+        //mLifeLeft -= Time.deltaTime;
+        //if (mLifeLeft <= 0.0)
+        //{
+        //    Destroy(gameObject);
+        //}
         transform.position = mpPhysicsData.pos;
     }
 
@@ -55,22 +55,23 @@ public class Particle2D : MonoBehaviour
         Integrator.Integrate(ref mpPhysicsData, dt);
     }
 
-    public double GetPercentageOfLifeLeft()
-    {
-        if(mLifeSpan <= 0.0)
-        {
-            return 0.0;
-        }
-        return mLifeLeft / mLifeSpan;
-    }
+    //public double GetPercentageOfLifeLeft()
+    //{
+    //    if(mLifeSpan <= 0.0)
+    //    {
+    //        return 0.0;
+    //    }
+    //    return mLifeLeft / mLifeSpan;
+    //}
 
-    public double GetPercentageOfLifeElapsed()
-    {
-        return 1.0 - GetPercentageOfLifeLeft();
-    }
+    //public double GetPercentageOfLifeElapsed()
+    //{
+    //    return 1.0 - GetPercentageOfLifeLeft();
+    //}
 
     private void OnDestroy()
     {
+        if(GameObject.FindObjectOfType<ParticleManager>() != null)
         GameObject.FindObjectOfType<ParticleManager>().DeleteParticle(this);
     }
 

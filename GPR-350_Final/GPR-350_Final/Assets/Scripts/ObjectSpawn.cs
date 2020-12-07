@@ -21,8 +21,10 @@ public class ObjectSpawn : MonoBehaviour
             Vector3 origin = Camera.main.ScreenToWorldPoint(Input.mousePosition, Camera.MonoOrStereoscopicEye.Mono);
             Vector3 changeZ = new Vector3(origin.x, origin.y, asteroid.transform.position.z);
 
-            Instantiate(asteroid).transform.position = changeZ;
-            GetComponent<ParticleManager>().AddParticle(asteroid.GetComponent<Particle2D>());
+            GameObject obj = Instantiate(asteroid);
+            obj.transform.position = changeZ;
+            GetComponent<ParticleManager>().AddParticle(obj.GetComponent<Particle2D>());
+            ForceManager.AddForceGenerator(new PlanetaryForceGenerator(obj.GetComponent<Particle2D>()));
         }
     }
 }
