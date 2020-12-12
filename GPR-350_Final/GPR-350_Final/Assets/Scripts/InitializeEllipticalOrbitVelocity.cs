@@ -21,6 +21,7 @@ public class InitializeEllipticalOrbitVelocity : MonoBehaviour
                                    * (2/Vector2.Distance(aroundBody.mpPhysicsData.pos, GetComponent<Particle2D>().mpPhysicsData.pos) - 1 / semiMajorAxis));
         GetComponent<Particle2D>().mpPhysicsData.vel = (aroundBody.mpPhysicsData.pos - GetComponent<Particle2D>().mpPhysicsData.pos).normalized * speed;
         GetComponent<Particle2D>().mpPhysicsData.vel = new Vector2(GetComponent<Particle2D>().mpPhysicsData.vel.y, -GetComponent<Particle2D>().mpPhysicsData.vel.x) * (Random.Range(-1, 1) == 0 ? 1 : -1);
-        Destroy(this);
+        GetComponent<Particle2D>().mpPhysicsData.vel += aroundBody.mpPhysicsData.vel;
+        if (aroundBody.GetComponent<InitializeCircularOrbitVelocity>() == null && aroundBody.GetComponent<InitializeEllipticalOrbitVelocity>() == null) Destroy(this);
     }
 }
