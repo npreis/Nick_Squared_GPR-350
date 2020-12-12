@@ -14,7 +14,7 @@ public class PlanetaryForceGenerator : ForceGenerator2D
     public Particle2D mPlanet;
 
     static public int powerOfConstant = -11;
-    static private float universalGavitationalConstant;
+    static public float universalGavitationalConstant;
 
     // Start is called before the first frame update
     void Start()
